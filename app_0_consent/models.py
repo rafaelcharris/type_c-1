@@ -26,17 +26,19 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    nombre = models.StringField()
+    name = models.StringField()
     id_number = models.IntegerField()
-    phone = models.StringField()
+    phone = models.IntegerField()
 
+    # Esta función me permite verificar si un form cumple con los requisitos especificados en ella. Para hacerlo,
+    # solo necesito agregar {{ form.phone.errors }} en la template para que haga su magia.
     def phone_error_message(self, value):
         if len(str(value)) != 10:
-            return "Error: el número de celular debe tener 10 dígitos"
+            return "Error: el número de celular debe tener 10 dígitos."
 
     def report_consent(self):
         self.participant.vars['consent_name'] = self.nombre
         self.participant.vars['consent_id_number'] = self.id_number
-        self.participant.vars['phone'] = self.phone
+        self.participant.vars['consent_phone'] = self.phone
         print("[[ APP_0_CONSENT ]] - PLAYER - CONSENT_ADMIN.............ROUND NUMBER", self.round_number)
         print("[[ APP_0_CONSENT ]] - PLAYER - CONSENT_ADMIN.............PVARS ARE", self.participant.vars)

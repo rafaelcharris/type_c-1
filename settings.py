@@ -24,6 +24,7 @@ SESSION_CONFIGS = [
 ]
 # TODO: Add app_1_transcript to root folder
 # TODO: Remove waiting pages
+# TODO: Add a filter in the consent to check if a given participant has already participated *in the study*
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans

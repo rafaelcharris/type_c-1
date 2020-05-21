@@ -176,3 +176,4 @@ class Player(BasePlayer):
         label = "¿Qué tan de acuerdo está con que el Gobierno tenga que reducir las diferencias entre ricos y pobres, de pronto subiendo los impuestos para los ricos o proveyendo asistencia a los ingresos de los más pobres?"
                 " Por favor, indique que tan de acuerdo está marcando un número de uno a cinco en la escala de abajo, donde uno indica “estoy totalmente en desacuerdo” y cinco indica “estoy totalmente de acuerdo”."
                                    )
+    #
