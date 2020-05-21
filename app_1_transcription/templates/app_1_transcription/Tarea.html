@@ -13,13 +13,37 @@
           aparecen en el texto. Cuando termine de trascribir, de clic en el botón “Siguiente” para continuar con el
           siguiente párrafo.</p>
 
-    <p>{{ task_text }}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <p>Texto a transcribir:</p>
+            <div class="col-md-11 card bg-light">
+                <p>{{ task_text }}</p>
+            </div>
+            <p><textarea class="form-control" name="text_input" rows="2"></textarea></p>
+        </div>
+        <div class="col-sm">
+            <p></p>
+            <p></p>
+            <p>
+                The last round was number: {{ round_count }}.<br>
+                Your last answer was:
+                {% if correct_last_round == "correct" %}
+                <span style="color:green"><b>{{ correct_last_round }}</b></span>.
+                {% elif correct_last_round == "incorrect" %}
+                <span style="color:red"><b>{{ correct_last_round }}</b></span>.
+                {% endif %}<br>
+                Number of correct answers so far: {{ accumulated_is_correct }}.<br>
+                You have accumulated XXX so far
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
 
-    <p>Round counter: {{ round_count }}</p>
-    <p>Your last question was: {{ correct_last_round }}</p>
-    <p>Number of correct answers so far: {{ accumulated_is_correct }}</p>
-
-    <textarea class="form-control" name="text_input" rows="3"></textarea>
+        </div>
+    </div>
+</div>
 
     <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
 

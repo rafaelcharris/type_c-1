@@ -52,8 +52,9 @@ class Player(BasePlayer):
               self.is_correct)
 
     def accumulated_variables(self):
+        #TODO: Add acumulated payoff to show in the Task page in every round
         if self.round_number == 1:
-            accumulated_is_correct = 0
+            self.accumulated_is_correct = 0
         else:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_previous_rounds()]))
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............ROUND NUMBER: ",
