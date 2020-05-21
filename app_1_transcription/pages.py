@@ -4,13 +4,24 @@ from .models import Constants
 
 
 class Instrucciones(Page):
-    pass
+    def is_displayed(self):
+        if self.round_number == 1:
+            return True
+        elif self.round_number > 1:
+            return False
 
 
 class Tarea(Page):
 
     form_model = "player"
     form_fields = ["text_input"]
+
+    def is_displayed(self):
+        if self.round_number <= Constants.num_rounds:
+            return True
+        else:
+            return False
+
 
     def vars_for_template(self):
         self.player.accumulated_variables()
@@ -25,6 +36,11 @@ class Tarea(Page):
 
 
 class Resultados(Page):
+    def is_displayed(self):
+        if self.round_number == Constants.num_rounds:
+            return True
+        else:
+            return False
 
     form_model = "player"
 
