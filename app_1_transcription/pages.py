@@ -8,7 +8,14 @@ class Instrucciones(Page):
 
 
 class Tarea(Page):
-    pass
+
+    form_model = "player"
+    form_fields = ["text_input"]
+
+    def vars_for_template(self):
+        return dict(
+            task_text=self.player.task_text
+        )
 
 
 class Resultados(Page):

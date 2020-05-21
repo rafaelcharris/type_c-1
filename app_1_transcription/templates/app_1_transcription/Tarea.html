@@ -7,7 +7,16 @@
 
 {% block content %}
     <h4>Primera etapa - Tarea de transcripción</h4>
-    <p>djeidjei</p>
+
+    <p>Por favor transcriba el texto que aparece a continuación en el espacio
+          abajo. Sea exacto y esté seguro de que su transcripción tenga todos los caracteres y espacios, tal como
+          aparecen en el texto. Cuando termine de trascribir, de clic en el botón “Siguiente” para continuar con el
+          siguiente párrafo.</p>
+
+    <p>{{ task_text }}</p>
+
+    <textarea class="form-control" name="text_input" rows="3"></textarea>
+
     <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
 
 {% endblock %}

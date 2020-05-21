@@ -2,7 +2,7 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+import random
 
 author = 'Your name here'
 
@@ -15,10 +15,14 @@ class Constants(BaseConstants):
     name_in_url = 'app_1_transcription'
     players_per_group = None
     num_rounds = 1
+    text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        for p in self.get_players():
+            p.task_text = Constants.text_list[1]
+
 
 
 class Group(BaseGroup):
@@ -26,7 +30,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    name = models.StringField()
+
+    task_text = models.StringField()
+    text_input = models.StringField()
 
     def report_app_1_transcript(self):
         self.participant.vars['consent_name'] = self.name

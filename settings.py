@@ -16,15 +16,13 @@ SESSION_CONFIGS = [
         'name': 'type_c',
         'display_name': 'type_c',
         'num_demo_participants': 2,
-        'app_sequence': ['app_0_consent', 'app_1_transcription', 'app_3_summary', 'app_10_questionnaire',
-                         'app_11_report'],
-        #'app_sequence': ['app_1_transcription'],
+        #'app_sequence': ['app_0_consent', 'app_1_transcription', 'app_3_summary', 'app_10_questionnaire',
+        #                 'app_11_report'],
+        'app_sequence': ['app_1_transcription'],
         'use_browser_bots': False,
         'time_limit': 60*4,
     },
 ]
-# TODO: Add app_1_transcript to root folder
-# TODO: Remove waiting pages
 # TODO: Add a filter in the consent to check if a given participant has already participated *in the study*
 # TODO: Make more salient the error form in consent.html
 
