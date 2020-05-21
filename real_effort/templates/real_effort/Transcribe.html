@@ -1,0 +1,79 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Tarea de Transcripción {{ subsession.round_number }}/{{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Por favor, transcriba (copie) el texto que aparece a continuación en el espacio debajo.
+        Sea exacto y esté seguro de tener todos los caractéres y espacios bien:
+    </p>
+
+<div class = "text">
+<p id = "task"> <b>{{ reference_text }}</b> </p>
+</div>
+
+    <br><br>
+
+    {% formfield player.transcribed_text label="" %}
+
+    {% next_button %}
+
+    {% if debug %}
+        <div class="card border-warning">
+            <div class="card-body">
+            <h4>Explanation for researchers (shown in debug mode only)</h4>
+            <p>
+                You are playing in debug mode, so you can skip the manual
+                transcription
+                by clicking <a href="#" id="prefill">this link</a>
+                and clicking "next".
+            </p>
+
+            <p>
+                A subject can only advance to the next screen if the
+                transcription is {{ required_accuracy }}% accurate.
+            </p>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+<style>
+    #task{
+    font-size: 25px;
+    }
+    div {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.text{
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 20px;
+    background-color: rgba(45, 45, 45, 0.1);
+    margin: auto;
+}
+</style>
+
+<script>
+    $(document).ready(function () {
+        var referenceText = {{ reference_text|json }};
+        $('#prefill').click(function () {
+            $('#id_transcribed_text').val(referenceText);
+        })
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,149 @@
+﻿cd D:/Dropbox/1_Personal/Otree/Chocolate_v3
+
+git init
+git status
+git add .
+git commit -m "Message here"
+git status
+git log
+
+git branch	name_of_branch
+git branch
+git checkout name_of_branch
+
+
+
+https://git-scm.com/book/en/v1/Git-Tools-Stashing
+
+git stash save "Name of save"
+git stash list
+git checkout master
+git checkout name_of_branch
+git stash apply
+
+git commit -m "Escribir función de pago belief con shuffle. El shuffle corre cuatro veces"
+
+git stash save "pasar el payoff function a la subsession me corre el shuffle una sola vez"
+git commit -m "pasar el payoff function a la subsession me corre el shuffle una sola vez"
+git reset --hard HEAD^
+
+git commit -m "el código de los beliefs funciona perfecto. Falta funcion de pagos finales y páginas resumen"
+
+D:\Dropbox\2_CID\Violence_Shocks\Shocks_ProAntiSocial\2_Design\Code\Chocolate_v3
+D:\Dropbox\2_CID\Violence_Shocks\Shocks_ProAntiSocial\2_Design\Code\Chocolate_v3
+
+git commit -m "unir consent, addition y trust en el codigo. Bots corren correctamente. Pendiente: Admin, Timers, Antisocial apps"
+git remote add origin https://github.com/felmola/Shocks_Pro_Anti_Social.git
+git push --all
+
+git commit -m "created admin report but still preents problems when loading the template -after- they all arrived at the end.
+detected an error on the belief payoff function"
+
+git commit -m "fixed the error on belief payoff function and fixed the problem with the admin template. TODO: random answers on the bots and test bot answers"
+
+git checkout master
+git merge belief_payoff_function
+
+git branch random_bots
+git checkout random_bots
+
+git commit -m "wrote random bots apparently correct. TODO: Timer in additions, test bots"
+
+git commit -m "wrote iterated names and ids on consent TODO: Timer in additions, test bots"
+
+git commit -m "wrote the code in report to show variables at the end of database. TODO: Same as before. Detected an error in treatments"
+
+git commit -m "Fixed treatment inconsistencies in trust app. TODO: Timer in additions, test bots"
+
+git commit -m "Created p.participant.vars in trust app to be passed onto admin report player variables. i e. have them in database for easy comparison. Fist try. TODO: Timer in additions"
+
+git commit -m "fixed some p.participant missing data on database. TODO: Timer in additions"
+
+git commit -m "found an error in the belief payoff function. It is adding incorrectly"
+
+now i want to roll back to commit "30586b6a81f7da3e1a073168d9726a3ba222cb1230586b6a81f7da3e1a073168d9726a3ba222cb12" because I realized
+that to test the trust app i dont need and admin report. I could use the normal database and checked it was ok.
+For this I commit the current changes so I don't loose them just in case. (a dead-end branch)
+git commit -m "commited for a dead branch in the admin report for the trust"
+then i create a new branch
+git branch dead_end_adminvars_trust (this does not take me out of the current branch)
+then i reset to the commit i want
+git reset --hard 30586b6a81f7da3e1a073168d9726a3ba222cb12
+
+to avoind some error when pushing the rolled back branch put:
+git push --all -f
+
+git commit -m "recovered Git Commands.txt from dead_end branch"
+
+git commit -m "Changed text from addition pages"
+git commit -m "Changed text from trust intro"
+git commit -m "Changed text from trust send"
+git commit -m "Changed text from trust receive"
+
+git commit -m "Created page in admin report app to show participants the results"
+git commit -m "Created -some- player variables for displaying"
+git commit -m "Passed those  -some- variables to te template. Deleted treatments on trust. Ony four additions to test"
+
+I want to create a branch (instr-butt) from the current one (text_prot):
+git checkout -b instruction_button text_from_protocol
+
+git commit -m "Pasted the instruction button on send and sendback pages"
+code to merge in a cooler way (preservinghistory) (from tex_prot pull inst_button):
+git checkout text_from_protocol
+git merge --no-ff instruction_button
+
+git checkout -b no_select_addends text_from_protocol
+git commit -m "Created css to no_select addends and changed path"
+
+When i fuck up without commiting just write:
+git reset --hard <name of commit you want to restore>
+
+git commit -m "Changed every reference to sumas_css to css.css"
+git commit -m "Blocked all pages with the css.css except the admin report ones"
+
+git commit -m "Change default language"
+git commit -m "Put conditional for title in trust app depending on round number"
+git commit -m "Changed empezar button. Changed continuar for empezar"
+git commit -m "changed the text in the options for the trust"
+
+git checkout -b total_payoff_trust text_from_protocol
+
+git commit -m "created field trust_totalsum_payoff to add belief and trust and updated summary and admin_report"
+git commit -m "created field for finalfinal_payoff. Added finalfinal_payoff to database, adminreport and summary"
+
+git checkout text_from_protocol
+git commit -m "changed Git commands"
+git merge --no-ff total_payoff_trust
+
+git commit -m "Changed git commnads again to merge text_from_protiocol to master"
+git checkout master
+git merge --no-ff text_from_protocol
+
+py -3.6 -m pip install packagename
+
+git commit -m "Added the timer. Tried to fix timer bots."
+git commit -m "Added the remaining addition problems and changed num_rounds. Fixed bots for 40 rounds. bots still broken"
+
+git commit -m "changed Git commands for mergin timer_for_add to master"
+git checkout master
+git merge --no-ff timer_for_add
+
+git commit -m "changed values in options for send_back and blue button space"
+
+git commit -m "for session"
+git checkout master
+git merge --no-ff small_changes
+
+#pass changes to new branch
+git checkout -b corrections
+git commit -m "changed addends and answers in bots"
+
+git commit -m "several changes. Fixed payoff function. Passed variables to admin_report ok"
+git commit -m "added cuestionario_intro"
+
+git checkout -b more_corrections
+git commit -m "changed time_limit so session.config"
+
+git commit -m "fixed bots with chris's code. It was not possible to delete the last page in trust because of the payoff fucntion"
+git checkout master
+git merge --no-ff more_corrections
