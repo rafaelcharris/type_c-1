@@ -19,7 +19,6 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    # TODO: Have a different text per round
     def creating_session(self):
         for p in self.get_players():
             p.task_text = Constants.text_list[self.round_number - 1]
@@ -41,6 +40,7 @@ class Player(BasePlayer):
     is_correct = models.IntegerField()
     accumulated_is_correct = models.IntegerField()
 
+    # TODO: This function needs some refining. To control for spaces, caps and other stuff.
     def check_if_correct(self):
         if self.task_text == self.text_input:
             self.is_correct = 1
