@@ -10,5 +10,5 @@ class PlayerBot(Bot):
 
     def play_round(self):
         yield (pages.Bienvenido)
-        yield (pages.Consent, {'nombre': next(self.names), 'id_number': random.randint(18, 90)})
+        yield (pages.Consent, {'name': next(self.names), 'id_number': random.randint(18, 90)})
 
