@@ -22,9 +22,11 @@ class Subsession(BaseSubsession):
     # TODO: Have a different text per round
     def creating_session(self):
         for p in self.get_players():
-            p.task_text = Constants.text_list[0]
-
-
+            p.task_text = Constants.text_list[self.round_number - 1]
+        print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - check_if_correct().............ROUND NUMBER: ",
+              self.round_number)
+        print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - check_if_correct().............task_text: ",
+              p.task_text)
 
 class Group(BaseGroup):
     pass
