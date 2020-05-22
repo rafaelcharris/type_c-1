@@ -22,14 +22,23 @@ class Constants(BaseConstants):
     #TODO: Introduce text
 class Subsession(BaseSubsession):
     def creating_session(self):
+        """
+        This function (otree native) runs at the beginning of the session and for all rounds of the session.
+        """
+        self.generate_text_lists()
+
+    def generate_text_lists(self):
+        """
+        This function generates the texts to be added to each participant for each round.
+        """
         for p in self.get_players():
             p.task_text = Constants.text_list[self.round_number - 1]
-            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - creating_session().............ROUND NUMBER: ",
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............ROUND NUMBER: ",
                   self.round_number)
-            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - creating_session().............PARTICIPANT: ",
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............PARTICIPANT: ",
                   p) # This p is different for every round
-            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - creating_session().............task_text: ", p.task_text)
-            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - creating_session().............###########################")
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............task_text: ", p.task_text)
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............###########################")
 
 class Group(BaseGroup):
     pass
