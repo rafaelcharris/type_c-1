@@ -15,16 +15,17 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'app_1_transcription'
     players_per_group = None
-    num_rounds = 5
+    num_rounds = 2
     text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
     piece_rate = 1
     treatments = [0, 1]
     shock = 0.2
     time_limit = 60*4
     cop_per_ume = 2000
+    currency = "UME"
+    shock_for_instructions = str(int((1-shock)*100)) + "%"
 
     #TODO: Pilot with the UEC the number of text they can write and adjust to match average from Sumas
-    #TODO: Introduce text
 class Subsession(BaseSubsession):
     def creating_session(self):
         """
@@ -70,8 +71,7 @@ class Player(BasePlayer):
     is_correct = models.IntegerField()
     accumulated_is_correct = models.IntegerField()
     accumulated_payoff = models.IntegerField()
-    final_payoff = models.FloatField()
-    #TODO: Convert to integer final_payoff
+    final_payoff = models.IntegerField()
 
     def check_if_correct(self):
         """
@@ -96,10 +96,10 @@ class Player(BasePlayer):
             self.accumulated_payoff = 0
         elif 1 < self.round_number < Constants.num_rounds:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_previous_rounds()]))
-            self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume
+            self.accumulated_payoff = int(self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume)
         else:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_all_rounds()]))
-            self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume
+            self.accumulated_payoff = int(self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............round_number: ",
               self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............accumulated_is_correct: ",
@@ -111,7 +111,7 @@ class Player(BasePlayer):
         This function affects accumulated_payoff from the very last round depending on treatment and on Constants.shock.
         """
         if self.treatment == 1:
-            self.final_payoff = (self.accumulated_payoff * Constants.shock)
+            self.final_payoff = int(self.accumulated_payoff * Constants.shock)
         elif self.treatment == 0:
             self.final_payoff = self.accumulated_payoff
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............round_number: ",self.round_number)

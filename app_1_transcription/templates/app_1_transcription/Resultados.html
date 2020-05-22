@@ -11,12 +11,14 @@
     {% if  player.treatment  ==  0  %}
         <p>
             Sus ganancias acumuladas <b>NO</b> han sido afectadas.<br>
-            Usted habia acumulado <b>{{ accumulated_payoff }} UME</b>. Ahora usted tiene lo mismo.<br>
+            Usted habia acumulado <b>{{ accumulated_payoff }} {{ Constants.currency }}</b>. Ahora usted tiene lo
+            mismo.<br>
         </p>
     {% elif  player.treatment  ==  1  %}
         <p>
             Sus ganancias acumuladas <b>han</b> sido afectadas.<br>
-            Usted habia acumulado <b>{{ accumulated_payoff }} UME</b>. Ahora usted tiene {{ final_payoff }}.<br>
+            Usted habia acumulado <b>{{ accumulated_payoff }} {{ Constants.currency }}</b>. Ahora usted tiene
+            <b>{{ final_payoff }} {{ Constants.currency }}</b>.<br>
         </p>
     {% endif %}
 
