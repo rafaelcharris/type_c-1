@@ -15,6 +15,12 @@ class Constants(BaseConstants):
     name_in_url = 'app_2_dados'
     players_per_group = None
     num_rounds = 1
+    die_numbers = [1, 2, 3, 4, 5, 6]
+    numbers_payoffs = [2, 4, 6, 8, 10, 0]
+    # Session wide constants (to be copied and pasted in each models.py)
+    cop_per_ume = 2000
+    currency = "UME"
+
 
 
 class Subsession(BaseSubsession):
@@ -28,25 +34,26 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     reporte_numero = models.IntegerField(
+        #choices shows to the user the right-hand side and stores in the model the left-hand side.
         choices=[
-            (1, '1'),
-            (2, '2'),
-            (3, '3'),
-            (4, '4'),
-            (5, '5'),
-            (6, '6'),
+            (Constants.die_numbers[0], str(Constants.die_numbers[0])),
+            (Constants.die_numbers[1], str(Constants.die_numbers[1])),
+            (Constants.die_numbers[2], str(Constants.die_numbers[2])),
+            (Constants.die_numbers[3], str(Constants.die_numbers[3])),
+            (Constants.die_numbers[4], str(Constants.die_numbers[4])),
+            (Constants.die_numbers[5], str(Constants.die_numbers[5])),
         ],
         verbose_name='Por favor seleccione el número de su primer lanzamiento del dado en el siguiente cuadro:',
     )
 
     reporte_pago = models.IntegerField(
         choices=[
-            (2, '2 UME'),
-            (4, '4 UME'),
-            (6, '6 UME'),
-            (8, '8 UME'),
-            (10, '10 UME'),
-            (0, '0 UME'),
+            (Constants.numbers_payoffs[0], str(Constants.numbers_payoffs[0]) + " " + Constants.currency),
+            (Constants.numbers_payoffs[1], str(Constants.numbers_payoffs[1]) + " " + Constants.currency),
+            (Constants.numbers_payoffs[2], str(Constants.numbers_payoffs[2]) + " " + Constants.currency),
+            (Constants.numbers_payoffs[3], str(Constants.numbers_payoffs[3]) + " " + Constants.currency),
+            (Constants.numbers_payoffs[4], str(Constants.numbers_payoffs[4]) + " " + Constants.currency),
+            (Constants.numbers_payoffs[5], str(Constants.numbers_payoffs[5]) + " " + Constants.currency),
         ],
         verbose_name='Ahora por favor seleccione su pago de acuerdo a la tabla anterior en el siguiente cuadro:',
     )
@@ -66,13 +73,3 @@ class Player(BasePlayer):
             self.total_payoff = 10
         elif self.reporte_numero == 6:
             self.total_payoff = 0
-
-        self.payoff = self.total_payoff
-        print("[[ DADOS ]] - PLAYER - SET_PAYOFF.............TOTAL_PAYOFF IS", self.total_payoff)
-        print("[[ DADOS ]] - PLAYER - SET_PAYOFF.............PAYOFF IS", self.payoff)
-
-    def memory_admin(self):
-        self.participant.vars['dados_reporte_numero'] = self.reporte_numero
-        self.participant.vars['dados_payoff'] = self.total_payoff
-        print("[[ DADOS ]] - PLAYER - DADOS_ADMIN.............ROUND NUMBER", self.round_number)
-        print("[[ DADOS ]] - PLAYER - DADOS_ADMIN.............PVARS ARE", self.participant.vars)

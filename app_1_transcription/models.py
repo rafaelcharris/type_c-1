@@ -17,13 +17,14 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 2
     text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
-    piece_rate = 1
     treatments = [0, 1]
     shock = 0.2
     time_limit = 60*4
+    piece_rate = 1
+    shock_for_instructions = str(int((1-shock)*100)) + "%"
+    # Session wide constants (to be copied and pasted in each models.py)
     cop_per_ume = 2000
     currency = "UME"
-    shock_for_instructions = str(int((1-shock)*100)) + "%"
 
     #TODO: Pilot with the UEC the number of text they can write and adjust to match average from Sumas
 class Subsession(BaseSubsession):
@@ -122,7 +123,7 @@ class Player(BasePlayer):
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............treatment: ",self.treatment)
 
     def report_app_1_transcript(self):
-        #TODO: Export key variables to the admin report.
+        #TODO: Export key variables to the admin report. From all apps. (treatment, payoff, phone, id, name...)
         self.participant.vars['consent_name'] = self.name
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............round_number: ",
               self.round_number)
