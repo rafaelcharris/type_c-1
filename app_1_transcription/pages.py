@@ -61,14 +61,30 @@ class Tarea(Page):
 
 
 class Resultados(Page):
-# TODO: Get to work on thisone
+    form_model = "player"
+
     def is_displayed(self):
         if self.round_number == Constants.num_rounds:
             return True
         else:
             return False
 
-    form_model = "player"
+    def vars_for_template(self):
+        table_rows = []
+        for p in self.player.in_all_rounds():
+            if (p.text_input is not None):
+                row = dict(
+                    num_ronda=p.round_number,
+                    is_correct=p.is_correct,
+                    task_text=p.task_text,
+                    text_input=p.text_input
+                )
+                table_rows.append(row)
+        return dict(
+            table_rows=table_rows,
+            accumulated_payoff=self.player.accumulated_payoff,
+            final_payoff=self.player.final_payoff
+        )
 
 #    def vars_for_template(self):
 #        return dict(

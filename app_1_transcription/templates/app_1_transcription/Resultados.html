@@ -7,7 +7,41 @@
 
 {% block content %}
     <h4>Segunda Etapa - Tarea de transcripción</h4>
-    <p>loleoal</p>
+
+    {% if  player.treatment  ==  0  %}
+        <p>
+            Sus ganancias acumuladas <b>NO</b> han sido afectadas.<br>
+            Usted habia acumulado <b>{{ accumulated_payoff }} UME</b>. Ahora usted tiene lo mismo.<br>
+        </p>
+    {% elif  player.treatment  ==  1  %}
+        <p>
+            Sus ganancias acumuladas <b>han</b> sido afectadas.<br>
+            Usted habia acumulado <b>{{ accumulated_payoff }} UME</b>. Ahora usted tiene {{ final_payoff }}.<br>
+        </p>
+    {% endif %}
+
+    <p>En la siguiente tabla encontrara un resumen de su desempeño:</p>
+
+    <table class="table">
+        <tr>
+            <th>Texto número</th>
+            <th>Texto original</th>
+            <th>Su texto</th>
+            <th>Fue correcto?<br>1=si, 0=no</th>
+        </tr>
+        {% for row in table_rows %}
+        <tr>
+            <td>{{ row.num_ronda }}</td>
+            <td>{{ row.task_text }}</td>
+            <td>{{ row.text_input }}</td>
+            <td>{{ row.is_correct }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p>Por favor de click en el botón "Siguiente" para continuar.</p>
+
+
     <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
 
 {% endblock %}
