@@ -12,8 +12,6 @@ class Instrucciones(Page):
 
 
 class Tarea(Page):
-# TODO: Put how many correct answers she has in this page in a nice way
-# TODO: Change language of text in Tarea.html and put UME where we talk about payoffs.
 
     form_model = "player"
     form_fields = ["text_input"]
@@ -32,16 +30,16 @@ class Tarea(Page):
             correct_last_round = ""
         else:  # all subsequent tasks
             if self.player.in_previous_rounds()[-1].is_correct:
-                correct_last_round = "correct"
+                correct_last_round = "correcta"
             else:
-                correct_last_round = "incorrect"
+                correct_last_round = "incorrecta"
         return dict(
             task_text=self.player.task_text,
             is_correct=self.player.is_correct,
             accumulated_is_correct=self.player.accumulated_is_correct,
             accumulated_payoff=self.player.accumulated_payoff,
             correct_last_round=correct_last_round,
-            round_count=self.player.round_number - 1
+            round_count=self.player.round_number
         )
 
     def before_next_page(self):

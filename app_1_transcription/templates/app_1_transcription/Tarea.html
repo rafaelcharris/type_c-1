@@ -29,15 +29,15 @@
             <p></p>
             <p></p>
             <p>
-                The last round was number: {{ round_count }}.<br>
-                Your last answer was:
-                {% if correct_last_round == "correct" %}
+                Esta es la ronda número: {{ round_count }}.<br>
+                Su respuesta anterior fue:
+                {% if correct_last_round == "correcta" %}
                 <span style="color:green"><b>{{ correct_last_round }}</b></span>.
-                {% elif correct_last_round == "incorrect" %}
+                {% elif correct_last_round == "incorrecta" %}
                 <span style="color:red"><b>{{ correct_last_round }}</b></span>.
                 {% endif %}<br>
-                Number of correct answers so far: {{ accumulated_is_correct }}.<br>
-                You have accumulated {{ accumulated_payoff }} so far.
+                El número de respuestas correctas hasta ahora es: {{ accumulated_is_correct }}.<br>
+                Usted ha acumulado {{ accumulated_is_correct }} UME hasta ahora.
             </p>
         </div>
     </div>
