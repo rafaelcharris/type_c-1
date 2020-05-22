@@ -17,8 +17,9 @@ class Constants(BaseConstants):
     num_rounds = 2
     text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
     piece_rate = 2000
-
-
+    #TODO: Pilot with the UEC the number of text they can write and adjust to match average from Sumas
+    #TODO: Create treatments
+    #TODO: Introduce text
 class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
@@ -42,8 +43,11 @@ class Player(BasePlayer):
     accumulated_is_correct = models.IntegerField()
     accumulated_payoff = models.IntegerField()
 
-    # TODO: This function needs some refining. To control for spaces, caps and other stuff.
+
     def check_if_correct(self):
+        """
+        This function calculates if the text in Constants is the same as the user inputted text.
+        """
         if self.task_text == self.text_input:
             self.is_correct = 1
         else:
