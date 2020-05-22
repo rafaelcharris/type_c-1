@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Dados
+{% endblock %}
+
+{% block content %}
+
+        <table class="table">
+            <tr>
+                <th>Resultado del lanzamiento</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+            </tr>
+            <tr>
+                <td>Pago en UME</td>
+                <td>2 UME</td>
+                <td>4 UME</td>
+                <td>6 UME</td>
+                <td>8 UME</td>
+                <td>10 UME</td>
+                <td>0 UME</td>
+            </tr>
+        </table>
+    <p>
+        Por favor tome el dado frente a usted y láncelo ahora.
+    </p>
+    <p>
+        {% formfield player.reporte_numero %}
+    </p>
+    <p>
+        {% formfield player.reporte_pago %}
+    </p>
+    <p>
+        Si ya realizó los lanzamientos, por favor presione el botón "Siguiente".
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "static_dados/css/style_dados.css" %}" rel="stylesheet">
+{% endblock %}
+

@@ -48,6 +48,9 @@ class Subsession(BaseSubsession):
             print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............########################")
 
     def generate_treatments(self):
+        """
+        This function assigns treatment values to the participants using itertools.cycle
+        """
         treatment = itertools.cycle(Constants.treatments)
         for p in self.get_players():
             p.treatment = next(treatment)
@@ -119,6 +122,7 @@ class Player(BasePlayer):
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............treatment: ",self.treatment)
 
     def report_app_1_transcript(self):
+        #TODO: Export key variables to the admin report.
         self.participant.vars['consent_name'] = self.name
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............round_number: ",
               self.round_number)

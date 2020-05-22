@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    De clic en el botón "Siguiente" para continuar con la siguiente actividad
+    <p></p>
+
+    <!--  Titulo: Resultados -->
+
+    <!-- <p>
+        Usted reportó haber sacado el número <b>{{ player.reporte_numero }}</b>.
+    </p>
+    <p>
+        Su pago por esta tarea es de <b>{{ player.total_payoff }} UME</b>
+    </p> -->
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "static_dados/css/style_dados.css" %}" rel="stylesheet">
+{% endblock %}
+

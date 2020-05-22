@@ -86,10 +86,6 @@ class Resultados(Page):
             final_payoff=self.player.final_payoff
         )
 
-#    def vars_for_template(self):
-#        return dict(
-#            is_correct=self.player.is_correct
-#        )
 
 page_sequence = [
     Instrucciones,

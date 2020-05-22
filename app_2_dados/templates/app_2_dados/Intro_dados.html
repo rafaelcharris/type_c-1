@@ -1,0 +1,64 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instrucciones
+{% endblock %}
+
+{% block content %}
+    <p>
+        Esta es la segunda parte del estudio.
+    </p>
+    <p>
+        En esta tarea usted determinará su propio pago lanzando un dado en dos ocasiones cuando le sea indicado. Su
+        primer lanzamiento determinará cuánto va a recibir.
+    </p>
+    <p>
+        Usted puede observar el pago exacto en la siguiente tabla:
+    </p>
+        <table class="table">
+            <tr>
+                <th>Resultado del lanzamiento</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+            </tr>
+            <tr>
+                <td>Pago en UME</td>
+                <td>2 UME</td>
+                <td>4 UME</td>
+                <td>6 UME</td>
+                <td>8 UME</td>
+                <td>10 UME</td>
+                <td>0 UME</td>
+            </tr>
+        </table>
+    <p>
+        Esta tabla permanecerá en la pantalla hasta que usted haya ingresado el valor de su lanzamiento. Su segundo
+        lanzamiento solo tiene el propósito de que usted se asegure de que el dado está funcionando correctamente.
+        Usted puede, por supuesto, lanzar el dado más de dos veces, sin embargo, solo el primer lanzamiento cuenta.
+        Tenga en cuenta que su lanzamiento es totalmente privado. En la siguiente pantalla se le pedirá que realice
+        sus lanzamientos.
+    </p>
+    <p>
+        Al final del ejercicio las Unidades Monetarias Experimentales (UME) que constituyen su pago se convertirán
+        a pesos colombianos. Cada UME equivale a 1000 pesos colombianos.
+    </p>
+    <p>
+        Si tiene alguna duda, levante la mano y algún asistente se acercará a usted a resolvérsela.
+    </p>
+    <p>
+        Si está listo para continuar, por favor presione el botón "Siguiente".
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "static_dados/css/style_dados.css" %}" rel="stylesheet">
+{% endblock %}
+
