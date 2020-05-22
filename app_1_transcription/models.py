@@ -105,6 +105,9 @@ class Player(BasePlayer):
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............#########################")
 
     def final_payoff_calculator(self):
+        """
+        This function affects accumulated_payoff from the very last round depending on treatment and on Constants.shock.
+        """
         if self.treatment == 1:
             self.final_payoff = (self.accumulated_payoff * Constants.shock)
         elif self.treatment == 0:
