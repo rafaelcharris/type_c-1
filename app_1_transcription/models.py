@@ -2,7 +2,8 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-import random
+import random, itertools
+
 
 author = 'Your name here'
 
@@ -17,6 +18,7 @@ class Constants(BaseConstants):
     num_rounds = 2
     text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
     piece_rate = 2000
+    treatments = [0, 1]
     #TODO: Pilot with the UEC the number of text they can write and adjust to match average from Sumas
     #TODO: Create treatments
     #TODO: Introduce text
@@ -26,6 +28,7 @@ class Subsession(BaseSubsession):
         This function (otree native) runs at the beginning of the session and for all rounds of the session.
         """
         self.generate_text_lists()
+        self.generate_treatments()
 
     def generate_text_lists(self):
         """
@@ -33,12 +36,24 @@ class Subsession(BaseSubsession):
         """
         for p in self.get_players():
             p.task_text = Constants.text_list[self.round_number - 1]
-            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............ROUND NUMBER: ",
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............round_number: ",
                   self.round_number)
-            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............PARTICIPANT: ",
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............participant: ",
                   p) # This p is different for every round
             print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............task_text: ", p.task_text)
-            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............###########################")
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_text_lists().............########################")
+
+    def generate_treatments(self):
+        treatment = itertools.cycle(Constants.treatments)
+        for p in self.get_players():
+            p.treatment = next(treatment)
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_treatments().............round_number: ",
+                  self.round_number)
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_treatments().............participant: ",
+                  p) # This p is different for every round
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_treatments().............treatment: ",
+                  p.treatment)
+            print("[[ APP_1_TRANSCRIPTION ]] - SUBSESSION - generate_treatments().............########################")
 
 class Group(BaseGroup):
     pass
@@ -47,6 +62,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     task_text = models.StringField()
+    treatment = models.IntegerField()
     text_input = models.StringField()
     is_correct = models.IntegerField()
     accumulated_is_correct = models.IntegerField()
@@ -61,7 +77,7 @@ class Player(BasePlayer):
             self.is_correct = 1
         else:
             self.is_correct = 0
-        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - check_if_correct().............ROUND NUMBER: ",
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - check_if_correct().............round_number: ",
               self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - check_if_correct().............accumulated_is_correct: ",
               self.is_correct)
@@ -80,7 +96,7 @@ class Player(BasePlayer):
         else:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_all_rounds()]))
             self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate
-        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............ROUND NUMBER: ",
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............round_number: ",
               self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............accumulated_is_correct: ",
               self.accumulated_is_correct)
@@ -88,7 +104,7 @@ class Player(BasePlayer):
 
     def report_app_1_transcript(self):
         self.participant.vars['consent_name'] = self.name
-        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............ROUND NUMBER: ",
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............round_number: ",
               self.round_number)
-        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............PVARS ARE: ",
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............participant.vars: ",
               self.participant.vars)
