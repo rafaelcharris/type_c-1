@@ -16,6 +16,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 5
     text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
+    piece_rate = 2000
 
 
 class Subsession(BaseSubsession):
@@ -39,6 +40,7 @@ class Player(BasePlayer):
     text_input = models.StringField()
     is_correct = models.IntegerField()
     accumulated_is_correct = models.IntegerField()
+    accumulated_payoff = models.IntegerField()
 
     # TODO: This function needs some refining. To control for spaces, caps and other stuff.
     def check_if_correct(self):
@@ -55,8 +57,10 @@ class Player(BasePlayer):
         #TODO: Add acumulated payoff to show in the Task page in every round
         if self.round_number == 1:
             self.accumulated_is_correct = 0
+            self.accumulated_payoff = 0
         else:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_previous_rounds()]))
+            self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............ROUND NUMBER: ",
               self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............accumulated_is_correct: ",
