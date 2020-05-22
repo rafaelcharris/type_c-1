@@ -15,10 +15,11 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'app_1_transcription'
     players_per_group = None
-    num_rounds = 2
+    num_rounds = 5
     text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
     piece_rate = 2000
     treatments = [0, 1]
+    shock = 0.2
     #TODO: Pilot with the UEC the number of text they can write and adjust to match average from Sumas
     #TODO: Create treatments
     #TODO: Introduce text
@@ -67,6 +68,7 @@ class Player(BasePlayer):
     is_correct = models.IntegerField()
     accumulated_is_correct = models.IntegerField()
     accumulated_payoff = models.IntegerField()
+    final_payoff = models.FloatField()
 
 
     def check_if_correct(self):
@@ -101,6 +103,15 @@ class Player(BasePlayer):
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............accumulated_is_correct: ",
               self.accumulated_is_correct)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............#########################")
+
+    def final_payoff_calculator(self):
+        if self.treatment == 1:
+            self.final_payoff = (self.accumulated_payoff * Constants.shock)
+        elif self.treatment == 0:
+            self.final_payoff = self.accumulated_payoff
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............round_number: ",self.round_number)
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............final_payoff: ",self.final_payoff)
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............treatment: ",self.treatment)
 
     def report_app_1_transcript(self):
         self.participant.vars['consent_name'] = self.name

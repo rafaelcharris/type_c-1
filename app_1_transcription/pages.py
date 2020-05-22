@@ -46,6 +46,7 @@ class Tarea(Page):
         self.player.check_if_correct()
         if self.round_number == Constants.num_rounds:
             self.player.accumulated_variables()
+            self.player.final_payoff_calculator()
 
 
 class Resultados(Page):
