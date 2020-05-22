@@ -7,8 +7,36 @@
 
 {% block content %}
     <h4>Instrucciones - Tarea de transcripción</h4>
+    <p></p>
 
-    <p>blkabanbañn</p>
+    <p>La primera parte del estudio consta de dos etapas.</p>
+
+    <p>En la primera etapa, en la pantalla de su computador aparecerán unos párrafos, uno a la vez. Su tarea
+        consiste en transcribir estos párrafos en el recuadro dispuesto para ello.  Usted deberá transcribir tantos
+        párrafos como pueda en un periodo de {{ time_limit }} minutos. Por cada párrafo que transcriba
+        correctamente se le pagará {{ Constants.piece_rate }} Unidad Monetaria Experimental (UME). Terminado el tiempo,
+        empezará la segunda etapa. En la segunda etapa puede ocurrir uno de dos eventos posibles que podrán afectar
+        sus ganancias en esta tarea:</p>
+
+    <p>1.	Sus ganancias acumuladas en la primera etapa no serán afectadas de ninguna manera. <br>
+        2.	Perderás el 80% de sus ganancias acumuladas en la primera etapa.</p>
+
+    <p>La probabilidad de que ocurra cada uno de estos eventos es del 50%, es decir, la misma probabilidad de que al
+        lanzar una moneda, esta salga cara.</p>
+
+    <p>Al final de la actividad, las Unidades Monetarias Experimentales (UME) que usted haya ganado se convertirán a
+        pesos colombianos. Cada UME equivale a {{ Constants.cop_per_ume}} pesos colombianos.</p>
+
+    <p>Veamos el siguiente ejemplo:</p>
+
+    <p>Si al final de la primera parte usted transcribió 10 párrafos, habrá ganado 10 UME, sin embargo, si el evento
+        que ocurrió fue en el que perdía el 80% de sus ganancias, entones usted habrá ganado 2 UME en esta parte.
+        Por el contrario, si el evento que ocurrió fue en el que sus ganancias no eran afectadas de ninguna manera,
+        entonces usted habrá ganado 10 UME en esta parte.</p>
+
+    <p>Cuando usted esté listo para iniciar, de clic en el botón “Siguiente”.</p>
+
+
     <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
 
 {% endblock %}

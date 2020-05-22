@@ -17,11 +17,13 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 5
     text_list = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"]
-    piece_rate = 2000
+    piece_rate = 1
     treatments = [0, 1]
     shock = 0.2
+    time_limit = 60*4
+    cop_per_ume = 2000
+
     #TODO: Pilot with the UEC the number of text they can write and adjust to match average from Sumas
-    #TODO: Create treatments
     #TODO: Introduce text
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -94,10 +96,10 @@ class Player(BasePlayer):
             self.accumulated_payoff = 0
         elif 1 < self.round_number < Constants.num_rounds:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_previous_rounds()]))
-            self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate
+            self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume
         else:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_all_rounds()]))
-            self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate
+            self.accumulated_payoff = self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............round_number: ",
               self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............accumulated_is_correct: ",

@@ -10,6 +10,11 @@ class Instrucciones(Page):
         elif self.round_number > 1:
             return False
 
+    def vars_for_template(self):
+        return dict(
+            time_limit=int(Constants.time_limit / 60)
+        )
+
 
 class Tarea(Page):
 
