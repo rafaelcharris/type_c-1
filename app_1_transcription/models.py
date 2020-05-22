@@ -71,7 +71,7 @@ class Player(BasePlayer):
     accumulated_is_correct = models.IntegerField()
     accumulated_payoff = models.IntegerField()
     final_payoff = models.FloatField()
-
+    #TODO: Convert to integer final_payoff
 
     def check_if_correct(self):
         """
