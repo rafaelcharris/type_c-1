@@ -27,13 +27,13 @@
                 <th>6</th>
             </tr>
             <tr>
-                <td>Pago en UME</td>
-                <td>2 UME</td>
-                <td>4 UME</td>
-                <td>6 UME</td>
-                <td>8 UME</td>
-                <td>10 UME</td>
-                <td>0 UME</td>
+                <td>Pago en {{ Constants.currency }}</td>
+                <td>2 {{ Constants.currency }}</td>
+                <td>4 {{ Constants.currency }}</td>
+                <td>6 {{ Constants.currency }}</td>
+                <td>8 {{ Constants.currency }}</td>
+                <td>10 {{ Constants.currency }}</td>
+                <td>0 {{ Constants.currency }}</td>
             </tr>
         </table>
     <p>
@@ -44,8 +44,8 @@
         sus lanzamientos.
     </p>
     <p>
-        Al final del ejercicio las Unidades Monetarias Experimentales (UME) que constituyen su pago se convertirán
-        a pesos colombianos. Cada UME equivale a 1000 pesos colombianos.
+        Al final del ejercicio las Unidades Monetarias Experimentales ({{ Constants.currency }}) que constituyen su pago se convertirán
+        a pesos colombianos. Cada {{ Constants.currency }} equivale a {{ Constants.cop_per_ume }} pesos colombianos.
     </p>
     <p>
         Si tiene alguna duda, levante la mano y algún asistente se acercará a usted a resolvérsela.

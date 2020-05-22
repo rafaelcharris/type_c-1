@@ -20,6 +20,7 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results_dados(Page):
+    #TODO: Fix when the payoff is calculated
     def vars_for_template(self):
         self.player.set_payoff()
         self.player.memory_admin()
