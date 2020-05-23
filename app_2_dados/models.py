@@ -59,7 +59,7 @@ class Player(BasePlayer):
     )
 
     total_payoff = models.IntegerField()
-
+    #TODO: There´s got to be an easier way to write this. Perhaps with aditional parameters or a dictionary?
     def set_payoff(self):
         if self.reporte_numero == 1:
             self.total_payoff = 2

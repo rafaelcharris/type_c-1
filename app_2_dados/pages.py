@@ -4,7 +4,6 @@ from .models import Constants
 
 
 class Intro_dados(Page):
-    #TODO: Change text in all pages.
     #TODO: Ask or decide when to show results and how many results.
     #TODO: Add a function called money_payoff that converts UMEs to pesos for each app and then sums them up at the end.
     pass
@@ -25,5 +24,5 @@ class Results_dados(Page):
 page_sequence = [
     Intro_dados,
     Lanzamiento,
-    #Results_dados
+    Results_dados
 ]

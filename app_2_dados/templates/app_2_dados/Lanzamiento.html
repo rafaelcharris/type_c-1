@@ -2,10 +2,12 @@
 {% load otree static %}
 
 {% block title %}
-    Dados
+    Segunda parte
 {% endblock %}
 
 {% block content %}
+
+    <h4>Lanzamiento</h4>
 
         <table class="table">
             <tr>
@@ -27,9 +29,7 @@
                 <td>0 {{ Constants.currency }}</td>
             </tr>
         </table>
-    <p>
-        Por favor tome el dado frente a usted y láncelo ahora.
-    </p>
+    <p>Por favor use su dado virtual y realice sus lanzamientos (https://www.dado-virtual.com/).</p>
     <p>
         {% formfield player.reporte_numero %}
     </p>

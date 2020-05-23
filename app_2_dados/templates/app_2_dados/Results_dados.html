@@ -2,21 +2,16 @@
 {% load otree static %}
 
 {% block title %}
+    Segunda parte
 {% endblock %}
 
 {% block content %}
 
-    De clic en el botón "Siguiente" para continuar con la siguiente actividad
-    <p></p>
+    <h4>Resultados</h4>
 
-    <!--  Titulo: Resultados -->
+    <p>Usted reportó haber sacado el número <b>{{ player.reporte_numero }}</b>.</p>
 
-    <!-- <p>
-        Usted reportó haber sacado el número <b>{{ player.reporte_numero }}</b>.
-    </p>
-    <p>
-        Su pago por esta tarea es de <b>{{ player.total_payoff }} UME</b>
-    </p> -->
+    <p>Su pago por esta tarea es de <b>{{ player.total_payoff }} {{ Constants.currency }}.</b></p>
 
     {% next_button %}
 
