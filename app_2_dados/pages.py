@@ -18,7 +18,9 @@ class Lanzamiento(Page):
 
 
 class Results_dados(Page):
-    pass
+
+    def before_next_page(self):
+        self.player.report_dados()
 
 
 page_sequence = [

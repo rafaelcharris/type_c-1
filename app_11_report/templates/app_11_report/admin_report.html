@@ -19,21 +19,15 @@
             <th class="bg-secondary"></th>
             <th class="bg-secondary"></th>
             <th class="bg-primary"></th>
-            <th class="bg-primary"></th>
-            <th class="bg-primary"></th>
-            <th class="bg-primary"></th>
             <th class="bg-success"></th>
-            <th class="bg-success"></th>
-            <th class="bg-success"></th>
-            <th class="bg-success"></th>
-            <th class="bg-success"></th>
-            <th class="bg-warning"></th>
+            <th class="bg-danger"></th>
         </tr>
         <tr>
             <th>Name</th>
             <th>Id</th>
             <th>Phone</th>
             <th>Transcription_payoff</th>
+            <th>Dados_payoff</th>
         </tr>
         {% for row in table_rows %}
         <tr>
@@ -41,6 +35,8 @@
             <td>{{ row.consent_id_number }}</td>
             <td>{{ row.consent_phone }}</td>
             <td>{{ row.transcription_final_payoff }}</td>
+            <td>{{ row.dados_total_payoff }}</td>
+
         </tr>
         {% endfor %}
     </table>

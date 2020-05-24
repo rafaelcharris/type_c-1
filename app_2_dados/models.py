@@ -73,3 +73,9 @@ class Player(BasePlayer):
             self.total_payoff = 10
         elif self.reporte_numero == 6:
             self.total_payoff = 0
+
+    def report_dados(self):
+        self.participant.vars['dados_total_payoff'] = self.total_payoff
+        print("[[ APP_2_DADOS ]] - PLAYER - report_dados.............ROUND NUMBER", self.round_number)
+        print("[[ APP_2_DADOS ]] - PLAYER - report_dados.............PVARS ARE", self.participant.vars)
+
