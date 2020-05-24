@@ -33,16 +33,9 @@ class Subsession(BaseSubsession):
         table_rows = []
         for p in self.get_players():
             row = p.participant.vars #quejesto?
-            row['participant_code'] = p.participant.code
             row['consent_name'] = p.participant.vars.get('consent_name')
             row['consent_id_number'] = p.participant.vars.get('consent_id_number')
-            row['trust_metarole'] = p.participant.vars.get('metarole')
-            row['real_effort_pay'] = p.participant.var.get('real_effort_payoff')
-            row['trust_paying_round'] = p.participant.vars.get('paying_round')
-            row['trust_t_money_payoff'] = p.participant.vars.get('t_money_payoff')
-            row['trust_b_money_payoff'] = p.participant.vars.get('b_money_payoff')
-            row['report_trust_totalsum_payoff'] = p.participant.vars.get('trust_totalsum_payoff')
-            row['report_FINAL_payoff'] = p.participant.vars.get('FINAL_payoff')
+            row['consent_phone'] = p.participant.vars.get('consent_phone')
             table_rows.append(row)
         return {'table_rows': table_rows}
 

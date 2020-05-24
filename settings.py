@@ -18,8 +18,8 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         #'app_sequence': ['app_0_consent', 'app_1_transcription', 'app_3_summary', 'app_10_questionnaire',
         #                 'app_11_report'],
-        'app_sequence': ['app_2_dados'],
-        'use_browser_bots': False,
+        'app_sequence': ['app_0_consent', 'app_2_dados', 'app_11_report'],
+        'use_browser_bots': True,
         'time_limit': 60*4,
     },
 ]

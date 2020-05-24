@@ -9,7 +9,7 @@ author = 'Your name here'
 doc = """
 Your app description
 """
-
+#TODO: Should we use this app?
 
 class Constants(BaseConstants):
     name_in_url = 'app_3_summary'
