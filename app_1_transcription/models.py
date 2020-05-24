@@ -122,10 +122,7 @@ class Player(BasePlayer):
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............final_payoff: ",self.final_payoff)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............treatment: ",self.treatment)
 
-    def report_app_1_transcript(self):
-        #TODO: Export key variables to the admin report. From all apps. (treatment, payoff, phone, id, name...)
-        self.participant.vars['consent_name'] = self.name
-        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............round_number: ",
-              self.round_number)
-        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_app_1_transcript().............participant.vars: ",
-              self.participant.vars)
+    def report_transcription(self):
+        self.participant.vars['transcription_final_payoff'] = self.final_payoff
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_transcription.............ROUND NUMBER", self.round_number)
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_transcription.............PVARS ARE", self.participant.vars)

@@ -86,6 +86,9 @@ class Resultados(Page):
             final_payoff=self.player.final_payoff
         )
 
+    def before_next_page(self):
+        self.player.report_transcription()
+
 
 page_sequence = [
     Instrucciones,

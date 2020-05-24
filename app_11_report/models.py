@@ -36,6 +36,8 @@ class Subsession(BaseSubsession):
             row['consent_name'] = p.participant.vars.get('consent_name')
             row['consent_id_number'] = p.participant.vars.get('consent_id_number')
             row['consent_phone'] = p.participant.vars.get('consent_phone')
+            row['transcription_final_payoff'] = p.participant.vars.get('transcription_final_payoff')
+
             table_rows.append(row)
         return {'table_rows': table_rows}
 
