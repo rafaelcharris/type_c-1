@@ -40,8 +40,8 @@ class Medidas(Page):
 
 
 page_sequence = [
-    phone_check,
-    wrong_number,
+    #phone_check,
+    #wrong_number,
     Cuestionario,
     Medidas,
 ]
