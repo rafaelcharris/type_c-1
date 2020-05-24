@@ -59,6 +59,7 @@ class Player(BasePlayer):
     )
 
     total_payoff = models.IntegerField()
+    final_payoff = models.IntegerField()
     #TODO: There´s got to be an easier way to write this. Perhaps with aditional parameters or a dictionary?
     def set_payoff(self):
         if self.reporte_numero == 1:
@@ -74,8 +75,21 @@ class Player(BasePlayer):
         elif self.reporte_numero == 6:
             self.total_payoff = 0
 
+    def final_payoff(self):
+        """
+        Created this function to convert UMEs to pesos.
+        """
+        self.final_payoff = self.total_payoff * Constants.cop_per_ume
+
     def report_dados(self):
-        self.participant.vars['dados_total_payoff'] = self.total_payoff
+        """
+        This function passes key information from each app to participant.vars so report can access it.
+        """
+        self.participant.vars['dados_final_payoff'] = self.final_payoff
+        self.participant.vars['ultra_final_payoff'] = int(self.participant.vars['transcription_final_payoff']) + \
+                                                      int(self.participant.vars['dados_final_payoff']) # This line
+        # is to put in the very last app to be played so it calculates the ultra final payoff right after
+        # participants finish with the money earning tasks.
         print("[[ APP_2_DADOS ]] - PLAYER - report_dados.............ROUND NUMBER", self.round_number)
         print("[[ APP_2_DADOS ]] - PLAYER - report_dados.............PVARS ARE", self.participant.vars)
 

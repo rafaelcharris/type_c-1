@@ -100,10 +100,10 @@ class Player(BasePlayer):
             self.accumulated_payoff = 0
         elif 1 < self.round_number < Constants.num_rounds:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_previous_rounds()]))
-            self.accumulated_payoff = int(self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume)
+            self.accumulated_payoff = int(self.accumulated_is_correct * Constants.piece_rate)
         else:
             self.accumulated_is_correct = sum(filter(None, [p.is_correct for p in self.in_all_rounds()]))
-            self.accumulated_payoff = int(self.accumulated_is_correct * Constants.piece_rate * Constants.cop_per_ume)
+            self.accumulated_payoff = int(self.accumulated_is_correct * Constants.piece_rate)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............round_number: ",
               self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - accumulated_variables().............accumulated_is_correct: ",
@@ -112,17 +112,21 @@ class Player(BasePlayer):
 
     def final_payoff_calculator(self):
         """
-        This function affects accumulated_payoff from the very last round depending on treatment and on Constants.shock.
+        This function affects accumulated_payoff from the very last round depending on treatment and on
+        Constants.shock. Besides, it converts UME into pesos.
         """
         if self.treatment == 1:
-            self.final_payoff = int(self.accumulated_payoff * Constants.shock)
+            self.final_payoff = int(self.accumulated_payoff * Constants.shock * Constants.cop_per_ume)
         elif self.treatment == 0:
-            self.final_payoff = self.accumulated_payoff
+            self.final_payoff = self.accumulated_payoff * Constants.cop_per_ume
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............round_number: ",self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............final_payoff: ",self.final_payoff)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............treatment: ",self.treatment)
 
     def report_transcription(self):
+        """
+        This function passes key information from each app to participant.vars so report can access it.
+        """
         self.participant.vars['transcription_final_payoff'] = self.final_payoff
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_transcription.............ROUND NUMBER", self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_transcription.............PVARS ARE", self.participant.vars)

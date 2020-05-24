@@ -20,6 +20,7 @@ class Lanzamiento(Page):
 class Results_dados(Page):
 
     def before_next_page(self):
+        self.player.final_payoff()
         self.player.report_dados()
 
 

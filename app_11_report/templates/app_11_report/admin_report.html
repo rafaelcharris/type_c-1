@@ -28,6 +28,7 @@
             <th>Phone</th>
             <th>Transcription_payoff</th>
             <th>Dados_payoff</th>
+            <th>Ultra_final_payoff</th>
         </tr>
         {% for row in table_rows %}
         <tr>
@@ -35,8 +36,8 @@
             <td>{{ row.consent_id_number }}</td>
             <td>{{ row.consent_phone }}</td>
             <td>{{ row.transcription_final_payoff }}</td>
-            <td>{{ row.dados_total_payoff }}</td>
-
+            <td>{{ row.dados_final_payoff }}</td>
+            <td>{{ row.ultra_final_payoff }}</td>
         </tr>
         {% endfor %}
     </table>
