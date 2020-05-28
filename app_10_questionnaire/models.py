@@ -67,8 +67,21 @@ class Player(BasePlayer):
         choices=['Soltera/o', 'Casada/o', 'Unión Marital de Hecho (Unión libre)', 'Viuda/o'],
         verbose_name='¿Cuál es su estado civil?',
     )
-    facultad = models.StringField(label = '¿ En que facultad está usted matriculado?')
-    carrera = models.StringField(label = '¿En que carrera está usted matriculado?')
+    facultad = models.CharField(label = '¿ En que facultad está usted matriculado?',
+                                choices =["Ciencias Económicas", "Ciencias Agrarias", "Artes","Ciencias","Enfermería",
+                                          "Ciencias Humanas", "Derecho, Ciencias Políticas y Sociales", "Ingeniería", "Medicina",
+                                          "Odontología", "Medicina Veterinaria y Zootécnia"])
+    carrera = models.CharField(label = '¿En que carrera está usted matriculado?',
+                               choices = ["Administración de empresas", "Antropología", "Arquitectura", "Artes plásticas",
+                                          "Biología", "Ciencia Política", "Ciencias de la Computación", "Cine y Televisión",
+                                          "Contaduría Pública", "Derecho", "Diseño Gráfico", "Diseño Industrial", "Economía", "Enfermería",
+                                          "Español y Filolofía clásica", "Estadística", "Estudios Literarios", "Farmacia", "Filología e Idiomas",
+                                          "Filosofía", "Fisioterapia", "Fonoaudiología", "Geografía", "Geología", "Historia", "Ingeniería Agrícola",
+                                          "Ingeniería Agronómica", "Ingeniería Civil", "Ingeniería de Sisstemas y Computación", "Ingeniería Eléctrica",
+                                          "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", " Ingeniería Mecatrónica",
+                                          "Ingeniería Química", "Lingüística", "Matemáticas", "Medicina", "medicina Veterinaria", "Música",
+                                          "Música Instrumental", "Nutrición y Dietética", "Odontología", "Psicología", " Química",
+                                          "Sociología", "Teraía Ocupacional", "Trabajo Social", "Zootecnia"])
     veces_matriculado = models.IntegerField(label = "¿Cuantas matrículas ha pagado contando la de este semestre?")
     ed_padre = models.CharField(
         choices=['Ninguno', 'Primaria', 'Bachillerato', 'Algún semestre universitario, pero no graduado', 'Técnico', 'Universitario', 'Posgrado'],
