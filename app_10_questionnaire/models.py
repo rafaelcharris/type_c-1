@@ -67,7 +67,10 @@ class Player(BasePlayer):
         choices=['Soltera/o', 'Casada/o', 'Unión Marital de Hecho (Unión libre)', 'Viuda/o'],
         verbose_name='¿Cuál es su estado civil?',
     )
-    facultad = models.StringField(label = '¿ En que facultad está usted matriculado?')
+    facultad = models.CharField(label = '¿ En que facultad está usted matriculado?',
+                                choices =["Ciencias Económicas", "Ciencias Agrarias", "Artes","Ciencias","Enfermería",
+                                          "Ciencias Humanas", "Derecho, Ciencias Políticas y Sociales", "Ingeniería", "Medicina",
+                                          "Odontología", "Medicina Veterinaria y Zootécnia"])
     carrera = models.StringField(label = '¿En que carrera está usted matriculado?')
     veces_matriculado = models.IntegerField(label = "¿Cuantas matrículas ha pagado contando la de este semestre?")
     ed_padre = models.CharField(
