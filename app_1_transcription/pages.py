@@ -21,6 +21,12 @@ class Tarea(Page):
     form_model = "player"
     form_fields = ["text_input"]
 
+    def vars_for_template(self):
+        return dict(
+            image_path='app_1_transcription/paragraphs/{}.png'.format(self.round_number),
+            reference_text=Constants.text_list[self.round_number - 1], #ESTO ES PARA CORREGIR EL TEXTO
+        )
+
     def is_displayed(self):
         if self.round_number <= Constants.num_rounds:
             return True
