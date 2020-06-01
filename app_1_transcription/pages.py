@@ -26,7 +26,7 @@ class Tarea(Page):
         correct_last_round = self.colour_correct()
 
         return dict(
-            image_path='app_1_transcription/paragraphs/{}.png'.format(self.round_number),
+            image_path='/app_1_transcription/paragraphs/{}.png'.format(self.round_number-1),
             reference_text=Constants.text_list[self.round_number - 1], #ESTO ES PARA CORREGIR EL TEXTO
             task_text=self.player.task_text,
             is_correct=self.player.is_correct,
