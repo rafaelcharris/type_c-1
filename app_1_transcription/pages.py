@@ -22,22 +22,12 @@ class Tarea(Page):
     form_fields = ["text_input"]
 
     def vars_for_template(self):
+        self.player.accumulated_variables()
+        correct_last_round = self.colour_correct()
+
         return dict(
             image_path='app_1_transcription/paragraphs/{}.png'.format(self.round_number),
             reference_text=Constants.text_list[self.round_number - 1], #ESTO ES PARA CORREGIR EL TEXTO
-        )
-
-    def is_displayed(self):
-        if self.round_number <= Constants.num_rounds:
-            return True
-        else:
-            return False
-
-
-    def vars_for_template(self):
-        self.player.accumulated_variables()
-        correct_last_round = self.colour_correct()
-        return dict(
             task_text=self.player.task_text,
             is_correct=self.player.is_correct,
             accumulated_is_correct=self.player.accumulated_is_correct,
@@ -45,6 +35,12 @@ class Tarea(Page):
             correct_last_round=correct_last_round,
             round_count=self.player.round_number
         )
+
+    def is_displayed(self):
+        if self.round_number <= Constants.num_rounds:
+            return True
+        else:
+            return False
 
     def before_next_page(self):
         self.player.check_if_correct()
