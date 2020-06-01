@@ -13,6 +13,7 @@ class Consent(Page):
 
     def before_next_page(self):
         self.player.report_consent()
+        self.player.check_id_in_database()
 
 
 class NormalWaitPage(WaitPage):
