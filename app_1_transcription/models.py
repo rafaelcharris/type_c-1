@@ -15,7 +15,6 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'app_1_transcription'
     players_per_group = None
-    num_rounds = 2
     text_list = [ "lah isang anak na lalaki, sa pagkamatay ng isang mapagpasunod at kagalang-galang ama, ay maaaring ma.",
     "san kanyang, kalungkutan ay una sa lahat, natagpuaan sa isang uri, ng pakikiramay sa kanyang nakaraa.",
     "yon taong mayaman, ay nagmula sa kanyang kayamanan, rsapagkat naramdaman niya na natural na nakukuha.",
@@ -27,6 +26,7 @@ class Constants(BaseConstants):
     "ang kanilang mga, hilig ay tila naghihintay na maghintay, upang matanggap ang kilusan at direkmksyon.",
     "agk mayroon siya, sa bawat sandali, isang pagkakataon ng mga kagiliw-giliw na sangkatauhan, at sa pa.",
     "kan yang sarili, ang object ng pagmamasid at kapwalpakiramdam ng bawat katawan, tungkol sa kanya wal."]
+    num_rounds = len(text_list)
     treatments = [0, 1]
     shock = 0.2
     time_limit = 60*4
