@@ -4,7 +4,7 @@ from otree.api import (
 )
 #For atuhentication with the spreadsheet
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+import pandas as pd
 
 author = 'Your name here'
 
@@ -59,10 +59,17 @@ class Player(BasePlayer):
         sh = gc.open("type c participation")
 
         sheet = sh.get_worksheet(0)
-        list_of_hashes = sheet.get_all_records()
-        print(list_of_hashes)
-        sheet.update("A3", self.id_number)
+        sheet_values = sheet.get_all_values()
 
-        #todo: hacer que el programa agrege info en dos columnas
-        #todo: hacer que el programa agrege infor en el siguiente row vacío
-        #todo: hacer que el programa lea información de la spreadsheet e
+        df_sheet = pd.DataFrame.from_records(sheet_values)
+        print(df_sheet.values)
+        if self.id_number in df_sheet.values or self.phone in df_sheet.values:
+            print("este valor ya está. no lo puede agregar")
+        else:
+            #Add into to these two columns
+            print("updated value en la fila {}".format(len(df_sheet)))
+            #Esto consigue el length del data set y le agrega un valor nuebo.
+            for_format = len(df_sheet) + 1
+            sheet.update("A{}:B{}".format(for_format,for_format), [[self.id_number, self.phone]])
+
+#todo: agregar código que lea la info y no acepte valores nuevos
