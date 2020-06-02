@@ -19,8 +19,13 @@ class Consent(Page):
 class NormalWaitPage(WaitPage):
     pass
 
+class end(Page):
+
+    def is_displayed(self):
+        return self.player.was_before == True
 
 page_sequence = [
     Bienvenido,
     Consent,
+    end
 ]

@@ -32,7 +32,7 @@ class Player(BasePlayer):
     name = models.StringField()
     id_number = models.IntegerField()
     phone = models.IntegerField()
-
+    was_before = models.BooleanField()
     # Esta función me permite verificar si un form cumple con los requisitos especificados en ella. Para hacerlo,
     # solo necesito agregar {{ form.phone.errors }} en la template para que haga su magia.
     def phone_error_message(self, value):
@@ -68,11 +68,12 @@ class Player(BasePlayer):
         if str(self.id_number) in df_sheet.values or str(self.phone) in df_sheet.values:
             print("este valor ya está. no lo puede agregar")
             print(df_sheet.values)
+            self.was_before = True
         else:
             #Add into to these two columns
             print("updated value en la fila {}".format(len(df_sheet)))
             #Esto consigue el length del data set y le agrega un valor nuebo.
             for_format = len(df_sheet) + 1
             sheet.update("A{}:B{}".format(for_format,for_format), [[self.id_number, self.phone]])
-
-#todo: agregar código que lea la info y no acepte valores nuevos
+            self.was_before = False
+#todo: Agregar código que fast track a las última página.
