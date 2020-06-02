@@ -18,12 +18,12 @@
         <img src="{% static image_path %}"/>
 
     </div>
-     <div>
+     <div id = "texto">
          <textarea class="form-control" name="text_input" rows="2"
                           placeholder="Escriba su respuesta en este espacio."></textarea>
      </div>
 </div>
-        <div class="col-sm">
+        <div class="col-sm" id = "results">
             <p></p>
             <p></p>
             <p>
@@ -38,11 +38,23 @@
                 Usted ha acumulado {{ accumulated_is_correct }} {{ Constants.currency }} hasta ahora.
             </p>
         </div>
-
     <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
 
 {% endblock %}
 
 {% block styles  %}
+<style>
+.form-control{
+    width: 100%
+    }
+#texto{
+     justify-content: space-around;
+     }
+
+#results{
+    border-color: red;
+    border-width: 2px;
+    }
+</style>
     <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}
