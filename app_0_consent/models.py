@@ -76,4 +76,4 @@ class Player(BasePlayer):
             for_format = len(df_sheet) + 1
             sheet.update("A{}:B{}".format(for_format,for_format), [[self.id_number, self.phone]])
             self.was_before = False
-#todo: Agregar código que fast track a las última página.
+#todo: agregar informaciónd de cédulas a base de spreadsheets
