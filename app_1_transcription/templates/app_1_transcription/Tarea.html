@@ -13,18 +13,16 @@
           aparecen en el texto. Cuando termine de trascribir, de clic en el botón “Siguiente” para continuar con el
           siguiente párrafo.</p>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <p>Texto a transcribir:</p>
-            <div class="col-md-11 card bg-light">
-                <img src="{% static image_path %}"/>
-            </div>
-            <p>
-                <textarea class="form-control" name="text_input" rows="2"
+<div>
+    <div>
+        <img src="{% static image_path %}"/>
+
+    </div>
+     <div>
+         <textarea class="form-control" name="text_input" rows="2"
                           placeholder="Escriba su respuesta en este espacio."></textarea>
-            </p>
-        </div>
+     </div>
+</div>
         <div class="col-sm">
             <p></p>
             <p></p>
@@ -40,13 +38,7 @@
                 Usted ha acumulado {{ accumulated_is_correct }} {{ Constants.currency }} hasta ahora.
             </p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
 
-        </div>
-    </div>
-</div>
 
     <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
 
