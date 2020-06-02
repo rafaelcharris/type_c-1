@@ -62,3 +62,7 @@ class Player(BasePlayer):
         list_of_hashes = sheet.get_all_records()
         print(list_of_hashes)
         sheet.update("A3", self.id_number)
+
+        #todo: hacer que el programa agrege info en dos columnas
+        #todo: hacer que el programa agrege infor en el siguiente row vacío
+        #todo: hacer que el programa lea información de la spreadsheet e
