@@ -63,8 +63,11 @@ class Player(BasePlayer):
 
         df_sheet = pd.DataFrame.from_records(sheet_values)
         print(df_sheet.values)
-        if self.id_number in df_sheet.values or self.phone in df_sheet.values:
+        print(self.id_number)
+        # toca convertir los valores en strings para que se pueda hacer bien la comparación con valores
+        if str(self.id_number) in df_sheet.values or str(self.phone) in df_sheet.values:
             print("este valor ya está. no lo puede agregar")
+            print(df_sheet.values)
         else:
             #Add into to these two columns
             print("updated value en la fila {}".format(len(df_sheet)))
