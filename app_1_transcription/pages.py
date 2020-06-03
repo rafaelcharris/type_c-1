@@ -1,7 +1,7 @@
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
-
+import time
 
 class Instrucciones(Page):
     def is_displayed(self):
@@ -15,11 +15,19 @@ class Instrucciones(Page):
             time_limit=int(Constants.time_limit / 60)
         )
 
+    def before_next_page(self):
+        self.participant.vars['expiry'] = time.time() + self.session.config['time_limit']
 
 class Tarea(Page):
 
     form_model = "player"
     form_fields = ["text_input"]
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
+
+    def is_displayed(self):
+        return self.participant.vars['expiry'] - time.time() > 0
 
     def vars_for_template(self):
         self.player.accumulated_variables()
