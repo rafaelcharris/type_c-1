@@ -5,13 +5,20 @@ from otree.api import (
 #For atuhentication with the spreadsheet
 import gspread
 import pandas as pd
-from django_user_agents.utils import get_user_agent
+from django.core.validators import EmailValidator
+from django.db import models as djmodels
 
 author = 'Your name here'
 
 doc = """
 Your app description
 """
+class UnalEmailValidator(EmailValidator):
+    def validate_domain_part(self, domain_part):
+        if domain_part != 'unal.edu.co':
+            return False
+        return True
+    message = "Por favor ingrese un correo con dominio @unal.edu.co"
 
 
 class Constants(BaseConstants):
@@ -34,7 +41,7 @@ class Player(BasePlayer):
     id_number = models.StringField()
     phone = models.StringField()
     was_before = models.BooleanField()
-    e_mail = models.StringField()
+    e_mail = djmodels.EmailField(validators=[UnalEmailValidator()])
 
     is_mobile = models.BooleanField()
 
@@ -90,5 +97,5 @@ class Player(BasePlayer):
             print("updated value en la fila {}".format(len(df_sheet)))
             #Esto consigue el length del data set y le agrega un valor nuebo.
             for_format = len(df_sheet) + 1
-            sheet.update("A{}:C{}".format(for_format,for_format, for_format), [[self.id_number, self.phone, self.e_mail]])
+            sheet.update("A{}:C{}".format(for_format,for_format, for_format), [[self.id_number, self.phone, str(self.e_mail)]])
             self.was_before = False
