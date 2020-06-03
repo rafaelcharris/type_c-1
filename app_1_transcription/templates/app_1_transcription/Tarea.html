@@ -6,27 +6,35 @@
 {% endblock %}
 
 {% block content %}
+<style xmlns:height="http://www.w3.org/1999/xhtml">
+#texto{
+    width: 1000px
+}
+#imagen{
+
+}
+.form-control{
+   width: 100%
+   }
+</style>
     <h4>Primera etapa - Tarea de transcripción</h4>
 
     <p>Por favor transcriba el texto que aparece a continuación en el espacio
           abajo. Sea exacto y esté seguro de que su transcripción tenga todos los caracteres y espacios, tal como
-          aparecen en el texto. Cuando termine de trascribir, de clic en el botón “Siguiente” para continuar con el
+          aparecen en el texto. Cuando termine de trascribir, dé clic en el botón “Siguiente” para continuar con el
           siguiente párrafo.</p>
 
-<div>
-    <div>
-        <img src="{% static image_path %}"/>
 
+    <div id = "imagen" class = "mt-2">
+        <img src="{% static image_path %}"/>
     </div>
-     <div id = "texto">
-         <textarea class="form-control" name="text_input" rows="2"
+
+    <div class = "form-control-mt-6">
+    <textarea id = "texto" name="text_input" height: auto
                           placeholder="Escriba su respuesta en este espacio."></textarea>
-     </div>
-</div>
-        <div class="col-sm" id = "results">
-            <p></p>
-            <p></p>
-            <p>
+    </div>
+        <div class="col-sm">
+            <p class = "mt-10">
                 Esta es la ronda número: {{ round_count }}.<br>
                 Su respuesta anterior fue:
                 {% if correct_last_round == "correcta" %}
@@ -43,18 +51,6 @@
 {% endblock %}
 
 {% block styles  %}
-<style>
-.form-control{
-    width: 100%
-    }
-#texto{
-     justify-content: space-around;
-     }
 
-#results{
-    border-color: red;
-    border-width: 2px;
-    }
-</style>
     <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}

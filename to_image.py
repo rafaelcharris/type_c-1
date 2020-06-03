@@ -25,8 +25,8 @@ text_list = [ "Lah isang anak na lalaki, sa pagkamatay ng isang mapagpasunod at 
 
 for text in range(len(text_list)):
     #https://code-maven.com/create-images-with-python-pil-pillow
-    img = Image.new('RGB', (1460, 55), color=(246,233,192))
-    helvetica = ImageFont.truetype(font="Helvetica.ttf", size=28)
+    img = Image.new('RGB', (1278, 55), color=(246,233,192))
+    helvetica = ImageFont.truetype(font="Helvetica.ttf", size=25)
     d = ImageDraw.Draw(img)
 
     d.text((10, 10), text_list[text], font = helvetica, fill=(62,61,57))
