@@ -19,7 +19,7 @@ class Bienvenido(Page):
 class Consent(Page):
 
     form_model = 'player'
-    form_fields = ['name', 'id_number', 'phone']
+    form_fields = ['name', 'id_number', 'phone', 'e_mail']
 
     def before_next_page(self):
         self.player.report_consent()

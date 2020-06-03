@@ -34,6 +34,7 @@ class Player(BasePlayer):
     id_number = models.StringField()
     phone = models.StringField()
     was_before = models.BooleanField()
+    e_mail = models.StringField()
 
     is_mobile = models.BooleanField()
 
@@ -89,5 +90,5 @@ class Player(BasePlayer):
             print("updated value en la fila {}".format(len(df_sheet)))
             #Esto consigue el length del data set y le agrega un valor nuebo.
             for_format = len(df_sheet) + 1
-            sheet.update("A{}:B{}".format(for_format,for_format), [[self.id_number, self.phone]])
+            sheet.update("A{}:C{}".format(for_format,for_format, for_format), [[self.id_number, self.phone, self.e_mail]])
             self.was_before = False
