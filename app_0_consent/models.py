@@ -5,6 +5,7 @@ from otree.api import (
 #For atuhentication with the spreadsheet
 import gspread
 import pandas as pd
+import request
 
 author = 'Your name here'
 
@@ -33,6 +34,9 @@ class Player(BasePlayer):
     id_number = models.StringField()
     phone = models.StringField()
     was_before = models.BooleanField()
+
+    device = models.StringField()
+
     # Esta función me permite verificar si un form cumple con los requisitos especificados en ella. Para hacerlo,
     # solo necesito agregar {{ form.phone.errors }} en la template para que haga su magia.
     def phone_error_message(self, value):
@@ -48,7 +52,7 @@ class Player(BasePlayer):
         try:
             int(value)
         except ValueError:
-            return "Error: esta identificación tiene carácteres no númericos"
+            return "Error: el documento de identidad tiene carácteres no númericos"
 
     def report_consent(self):
         self.participant.vars['consent_name'] = self.name
@@ -87,4 +91,13 @@ class Player(BasePlayer):
             for_format = len(df_sheet) + 1
             sheet.update("A{}:B{}".format(for_format,for_format), [[self.id_number, self.phone]])
             self.was_before = False
-#todo: agregar informaciónd de cédulas a base de spreadsheets
+
+    def identify_device(self):
+        try:
+            user_agent = request.META['HTTP_USER_AGENT']
+            print("the device is: " + str(user_agent.device.family))
+            self.device = user_agent.device.family
+            return user_agent.device.family
+        except:
+            self.device = None
+            print("Not able to identify mobile")

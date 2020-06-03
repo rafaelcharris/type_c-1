@@ -50,4 +50,9 @@ DEMO_PAGE_INTRO_HTML = """ """
 SECRET_KEY = 'e#4fre$rjqcttn)jfbwljsaq@j)mmgp(05ro*$%8#dfv(k*=)_'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['otree']
+INSTALLED_APPS = ['otree',
+                  'django_user_agents']
+
+MIDDLEWARE_CLASSES = (
+    'django_user_agents.middleware.UserAgentMiddleware',
+)

@@ -14,7 +14,7 @@ class Consent(Page):
     def before_next_page(self):
         self.player.report_consent()
         self.player.update_database()
-
+        self.player.identify_device()
 
 class NormalWaitPage(WaitPage):
     pass
