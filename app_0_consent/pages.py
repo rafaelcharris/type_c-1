@@ -3,7 +3,17 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 class Bienvenido(Page):
-    pass
+
+    def before_next_page(self):
+        user_agent = self.request.META['HTTP_USER_AGENT']
+        is_mobile = False
+        for substring in ["Mobi", "Android"]:
+            if substring in user_agent:
+                is_mobile = True
+                self.player.is_mobile = True
+            else:
+                self.player.is_mobile = False
+        print("fue mobile?: " + str(is_mobile))
 
 
 class Consent(Page):
@@ -14,7 +24,6 @@ class Consent(Page):
     def before_next_page(self):
         self.player.report_consent()
         self.player.update_database()
-        self.player.identify_device()
 
 class NormalWaitPage(WaitPage):
     pass

@@ -56,3 +56,5 @@ INSTALLED_APPS = ['otree',
 MIDDLEWARE_CLASSES = (
     'django_user_agents.middleware.UserAgentMiddleware',
 )
+
+USER_AGENTS_CACHE = 'default'

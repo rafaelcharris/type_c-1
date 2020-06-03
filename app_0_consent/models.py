@@ -5,7 +5,7 @@ from otree.api import (
 #For atuhentication with the spreadsheet
 import gspread
 import pandas as pd
-import request
+from django_user_agents.utils import get_user_agent
 
 author = 'Your name here'
 
@@ -35,7 +35,7 @@ class Player(BasePlayer):
     phone = models.StringField()
     was_before = models.BooleanField()
 
-    device = models.StringField()
+    is_mobile = models.BooleanField()
 
     # Esta función me permite verificar si un form cumple con los requisitos especificados en ella. Para hacerlo,
     # solo necesito agregar {{ form.phone.errors }} en la template para que haga su magia.
@@ -91,13 +91,3 @@ class Player(BasePlayer):
             for_format = len(df_sheet) + 1
             sheet.update("A{}:B{}".format(for_format,for_format), [[self.id_number, self.phone]])
             self.was_before = False
-
-    def identify_device(self):
-        try:
-            user_agent = request.META['HTTP_USER_AGENT']
-            print("the device is: " + str(user_agent.device.family))
-            self.device = user_agent.device.family
-            return user_agent.device.family
-        except:
-            self.device = None
-            print("Not able to identify mobile")
