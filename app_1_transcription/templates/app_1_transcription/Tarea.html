@@ -6,16 +6,13 @@
 {% endblock %}
 
 {% block content %}
-<style xmlns:height="http://www.w3.org/1999/xhtml">
-#texto{
-    width: 1000px
+<style>
+.top-buffer{
+    margin-top:20px;
 }
-#imagen{
-
+textarea{
+    width: 100%
 }
-.form-control{
-   width: 100%
-   }
 </style>
     <h4>Primera etapa - Tarea de transcripción</h4>
 
@@ -24,17 +21,16 @@
           aparecen en el texto. Cuando termine de trascribir, dé clic en el botón “Siguiente” para continuar con el
           siguiente párrafo.</p>
 
-
-    <div id = "imagen" class = "mt-2">
+<div class = "container">
+    <div class = "row top-buffer">
         <img src="{% static image_path %}"/>
     </div>
-
-    <div class = "form-control-mt-6">
+    <div class = "row top-buffer">
     <textarea id = "texto" name="text_input" height: auto
                           placeholder="Escriba su respuesta en este espacio."></textarea>
     </div>
-        <div class="col-sm">
-            <p class = "mt-10">
+        <div class="row top-buffer">
+                <p>
                 Esta es la ronda número: {{ round_count }}.<br>
                 Su respuesta anterior fue:
                 {% if correct_last_round == "correcta" %}
@@ -44,9 +40,10 @@
                 {% endif %}<br>
                 El número de respuestas correctas hasta ahora es: {{ accumulated_is_correct }}.<br>
                 Usted ha acumulado {{ accumulated_is_correct }} {{ Constants.currency }} hasta ahora.
-            </p>
+                </p>
         </div>
-    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
+</div>
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button top-buffer">Siguiente</button>
 
 {% endblock %}
 
