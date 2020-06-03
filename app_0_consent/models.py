@@ -39,6 +39,17 @@ class Player(BasePlayer):
         if len(str(value)) != 10:
             return "Error: el número de celular debe tener 10 dígitos."
 
+        try:
+            int(value)
+        except ValueError:
+            return "Error: el teléfono tiene carácteres no númericos"
+
+    def id_number_error_message(self, value):
+        try:
+            int(value)
+        except ValueError:
+            return "Error: esta identificación tiene carácteres no númericos"
+
     def report_consent(self):
         self.participant.vars['consent_name'] = self.name
         self.participant.vars['consent_id_number'] = self.id_number
