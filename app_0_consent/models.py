@@ -30,8 +30,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     name = models.StringField()
-    id_number = models.IntegerField()
-    phone = models.IntegerField()
+    id_number = models.StringField()
+    phone = models.StringField()
     was_before = models.BooleanField()
     # Esta función me permite verificar si un form cumple con los requisitos especificados en ella. Para hacerlo,
     # solo necesito agregar {{ form.phone.errors }} en la template para que haga su magia.
