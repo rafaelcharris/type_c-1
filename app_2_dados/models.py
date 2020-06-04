@@ -43,7 +43,7 @@ class Player(BasePlayer):
             (Constants.die_numbers[4], str(Constants.die_numbers[4])),
             (Constants.die_numbers[5], str(Constants.die_numbers[5])),
         ],
-        verbose_name='Por favor seleccione el número de su primer lanzamiento del dado en el siguiente cuadro:',
+        verbose_name='Por favor, seleccione el número de su primer lanzamiento del dado en el siguiente cuadro:',
     )
 
     reporte_pago = models.IntegerField(
