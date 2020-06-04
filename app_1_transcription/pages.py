@@ -26,9 +26,6 @@ class Tarea(Page):
     def get_timeout_seconds(self):
         return self.participant.vars['expiry'] - time.time()
 
-    def is_displayed(self):
-        return self.participant.vars['expiry'] - time.time() > 0
-
     def vars_for_template(self):
         self.player.accumulated_variables()
         correct_last_round = self.colour_correct()
@@ -45,10 +42,7 @@ class Tarea(Page):
         )
 
     def is_displayed(self):
-        if self.round_number <= Constants.num_rounds:
-            return True
-        else:
-            return False
+        return self.participant.vars['expiry'] - time.time() > 0
 
     def before_next_page(self):
         self.player.check_if_correct()

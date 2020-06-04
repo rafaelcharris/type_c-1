@@ -13,7 +13,6 @@ class Constants(BaseConstants):
     name_in_url = 'app_10_questionnaire'
     players_per_group = None
     num_rounds = 1
-    # TODO: Fix categories for easy data analysis.
 
 class Subsession(BaseSubsession):
     pass
