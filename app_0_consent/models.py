@@ -5,8 +5,10 @@ from otree.api import (
 #For atuhentication with the spreadsheet
 import gspread
 import pandas as pd
-from django.core.validators import EmailValidator
+
 from django.db import models as djmodels
+from django.core.validators import EmailValidator
+
 
 author = 'Your name here'
 
@@ -39,18 +41,18 @@ class Player(BasePlayer):
 
     name = models.StringField()
     id_number = models.StringField()
-    phone = models.StringField()
+    phone = models.StringField() #For verification
     was_before = models.BooleanField()
-    e_mail = djmodels.EmailField(validators=[UnalEmailValidator()])
-
+    #e_mail = djmodels.EmailField(validators=[UnalEmailValidator()])
+    e_mail = models.StringField()
     is_mobile = models.BooleanField()
+
 
     # Esta función me permite verificar si un form cumple con los requisitos especificados en ella. Para hacerlo,
     # solo necesito agregar {{ form.phone.errors }} en la template para que haga su magia.
     def phone_error_message(self, value):
         if len(str(value)) != 10:
             return "Error: el número de celular debe tener 10 dígitos."
-
         try:
             int(value)
         except ValueError:

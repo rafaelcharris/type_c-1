@@ -2,6 +2,12 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class Verification(Page):
+
+    form_model = 'player'
+    form_fields = ['id_number', 'phone', 'e_mail']
+
+
 class Bienvenido(Page):
 
     def before_next_page(self):

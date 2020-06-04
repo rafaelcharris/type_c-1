@@ -43,7 +43,7 @@ class Player(BasePlayer):
             (Constants.die_numbers[4], str(Constants.die_numbers[4])),
             (Constants.die_numbers[5], str(Constants.die_numbers[5])),
         ],
-        verbose_name='Por favor seleccione el número de su primer lanzamiento del dado en el siguiente cuadro:',
+        verbose_name='Por favor, seleccione el número de su primer lanzamiento del dado en el siguiente cuadro:',
     )
 
     reporte_pago = models.IntegerField(
@@ -61,19 +61,9 @@ class Player(BasePlayer):
     total_payoff = models.IntegerField()
     final_payoff = models.IntegerField()
     #TODO: There´s got to be an easier way to write this. Perhaps with aditional parameters or a dictionary?
+
     def set_payoff(self):
-        if self.reporte_numero == 1:
-            self.total_payoff = 2
-        elif self.reporte_numero == 2:
-            self.total_payoff = 4
-        elif self.reporte_numero == 3:
-            self.total_payoff = 6
-        elif self.reporte_numero == 4:
-            self.total_payoff = 8
-        elif self.reporte_numero == 5:
-            self.total_payoff = 10
-        elif self.reporte_numero == 6:
-            self.total_payoff = 0
+        self.total_payoff = self.reporte_numero * 2 if self.reporte_numero < 6 else self.total_payoff == 0
 
     def final_payoff(self):
         """
@@ -86,8 +76,11 @@ class Player(BasePlayer):
         This function passes key information from each app to participant.vars so report can access it.
         """
         self.participant.vars['dados_final_payoff'] = self.final_payoff
-        self.participant.vars['ultra_final_payoff'] = int(self.participant.vars['transcription_final_payoff']) + \
+        try:
+            self.participant.vars['ultra_final_payoff'] = int(self.participant.vars['transcription_final_payoff']) + \
                                                       int(self.participant.vars['dados_final_payoff']) # This line
+        except TypeError:
+            self.participant.vars['ultra_final_payoff'] = int(self.participant.vars['dados_final_payoff'])
         # is to put in the very last app to be played so it calculates the ultra final payoff right after
         # participants finish with the money earning tasks.
         print("[[ APP_2_DADOS ]] - PLAYER - report_dados.............ROUND NUMBER", self.round_number)
