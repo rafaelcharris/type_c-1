@@ -6,52 +6,55 @@
 {% endblock %}
 
 {% block content %}
-    <h4>Primera etapa - Tarea de transcripción</h4>
+<style>
+.top-buffer{
+    margin-top:20px;
+}
+textarea{
+    width: 100%
+}
 
-    <p>Por favor transcriba el texto que aparece a continuación en el espacio
-          abajo. Sea exacto y esté seguro de que su transcripción tenga todos los caracteres y espacios, tal como
-          aparecen en el texto. Cuando termine de trascribir, de clic en el botón “Siguiente” para continuar con el
+</style>
+<div class = "container-fluid">
+    <div class = "row">
+        <div class = "col-7">
+        <p class="text-left">
+        Por favor transcriba el texto que aparece a continuación en el espacio abajo. Sea exacto y esté seguro de que su transcripción tenga todos los caracteres y espacios, tal como
+          aparecen en el texto. Cuando termine de trascribir, haga clic en el botón “Siguiente” para continuar con el
           siguiente párrafo.</p>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <p>Texto a transcribir:</p>
-            <div class="col-md-11 card bg-light">
-                <img src="{% static image_path %}"/>
-            </div>
-            <p>
-                <textarea class="form-control" name="text_input" rows="2"
-                          placeholder="Escriba su respuesta en este espacio."></textarea>
-            </p>
         </div>
-        <div class="col-sm">
-            <p></p>
-            <p></p>
-            <p>
-                Esta es la ronda número: {{ round_count }}.<br>
-                Su respuesta anterior fue:
-                {% if correct_last_round == "correcta" %}
-                <span style="color:green"><b>{{ correct_last_round }}</b></span>.
-                {% elif correct_last_round == "incorrecta" %}
-                <span style="color:red"><b>{{ correct_last_round }}</b></span>.
-                {% endif %}<br>
-                El número de respuestas correctas hasta ahora es: {{ accumulated_is_correct }}.<br>
-                Usted ha acumulado {{ accumulated_is_correct }} {{ Constants.currency }} hasta ahora.
-            </p>
+        <div>
+            <div class = "col-4 card bg-light instructions m-1" style="max-width: 23rem;">
+                <p class="card-text">
+                    Esta es la ronda número: {{ round_count }}.<br>
+                    Su respuesta anterior fue:
+                    {% if correct_last_round == "correcta" %}
+                    <span style="color:green"><b>{{ correct_last_round }}</b></span>.
+                    {% elif correct_last_round == "incorrecta" %}
+                    <span style="color:red"><b>{{ correct_last_round }}</b></span>.
+                    {% endif %}<br>
+                    El número de respuestas correctas hasta ahora es: {{ accumulated_is_correct }}.<br>
+                    Usted ha acumulado {{ accumulated_is_correct }} {{ Constants.currency }} hasta ahora.
+                </p>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm">
 
-        </div>
+</div>
+<div class = "container">
+    <div class = "row top-buffer">
+        <img class = "img-responsive" src="{% static image_path %}"/>
+    </div>
+    <div class = "row top-buffer">
+    <textarea id = "texto" name="text_input" height: auto
+                          placeholder="Escriba su respuesta en este espacio."></textarea>
     </div>
 </div>
-
-    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Siguiente</button>
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button top-buffer">Siguiente</button>
 
 {% endblock %}
 
 {% block styles  %}
+
     <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}

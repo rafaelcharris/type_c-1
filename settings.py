@@ -23,7 +23,7 @@ SESSION_CONFIGS = [
         'time_limit': 60*4,
     },
 ]
-# TODO: Add a filter in the consent to check if a given participant has already participated *in the study*
+
 # TODO: Make more salient the error form in consent.html
 
 # ISO-639 code

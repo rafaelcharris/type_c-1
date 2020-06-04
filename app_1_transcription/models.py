@@ -15,18 +15,30 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'app_1_transcription'
     players_per_group = None
-    num_rounds = 2
-    text_list = [ "lah isang anak na lalaki, sa pagkamatay ng isang mapagpasunod at kagalang-galang ama, ay maaaring ma.",
-    "san kanyang, kalungkutan ay una sa lahat, natagpuaan sa isang uri, ng pakikiramay sa kanyang nakaraa.",
-    "yon taong mayaman, ay nagmula sa kanyang kayamanan, rsapagkat naramdaman niya na natural na nakukuha.",
-    "lam mapagpakumbabang, pag-aalaga at masakit na atensiyon na sumasakop, sa mga nasa kanyang kalagayan.",
-    "aks niiwas nila, ang kanilang mga mata sa kanya, o kung ang matinding kalungkutan ng kanyang pagkaba.",
-    "ipi pinipilit silang tumingin sa kanya, ito ay lamang na tumiwalag kaya hindi sumasangayon, sa isang.",
-    "pan kanyang mga aksyon, ay mga bagay ng pangangalaga sa publiko magkalas ng isang salita, mahirap ma.",
-    "pup sa isang malaking, pagpupulong siya ang taong pinagtutuunan ng lahat ng kanilang mga matta, nasa.",
-    "ang kanilang mga, hilig ay tila naghihintay na maghintay, upang matanggap ang kilusan at direkmksyon.",
-    "agk mayroon siya, sa bawat sandali, isang pagkakataon ng mga kagiliw-giliw na sangkatauhan, at sa pa.",
-    "kan yang sarili, ang object ng pagmamasid at kapwalpakiramdam ng bawat katawan, tungkol sa kanya wal."]
+    text_list = [ "Lah isang anak na lalaki, sa pagkamatay ng isang mapagpasunod at kagalang-galang ama, ay maaaring ma.",
+    "San kanyang, kalungkutan ay una sa lahat, natagpuaan sa isang uri, ng pakikiramay sa kanyang nakaraa.",
+    "Yon taong mayaman, ay nagmula sa kanyang kayamanan, rsapagkat naramdaman niya na natural na nakukuha.",
+    "Lam mapagpakumbabang, pag aalaga at masakit na atensiyon na sumasakop, sa mga nasa kanyang kalagayan.",
+    "Aks niiwas nila, ang kanilang mga mata sa kanya, o kung ang matinding kalungkutan ng kanyang pagkaba.",
+    "Ipi pinipilit silang tumingin sa kanya, ito ay lamang na tumiwalag kaya hindi sumasangayon, sa isang.",
+    "Pan kanyang mga aksyon, ay mga bagay ng pangangalaga sa publiko magkalas ng isang salita, mahirap ma.",
+    "Pup sa isang malaking, pagpupulong siya ang taong pinagtutuunan ng lahat ng kanilang mga matta, nasa.",
+    "Ang kanilang mga, hilig ay tila naghihintay na maghintay, upang matanggap ang kilusan at direkmksyon.",
+    "Agk mayroon siya, sa bawat sandali, isang pagkakataon ng mga kagiliw-giliw na sangkatauhan, at sa pa.",
+    "Kan yang sarili, ang object ng pagmamasid at kapwalpakiramdam ng bawat katawan, tungkol sa kanya wal.",
+    "Ang alituntunin na kung saan tayo ay natural na sumasang, ayon sumasang, ayono sa ating sariling pag.",
+    "Ay tila magkakapareho, ng pareho a pamamagitan ng kung ipinatupad natin, a mga katulad na paghuhukom.",
+    "Tungkol sa pag uugali ng ibang tao, Pinahihintulutan man, natin o hindi ayon ang pag uugali ng ibang.",
+    "Tao sa naramdaman natin na, kung natin sa ating sarili ang kanyang kaso, maaari natina o hindi lubos.",
+    "Na sa mga damdamino at motibo na itinuro nito at, sa parehong paraano, sinasang ayunan natin o hindi.",
+    "Sumasang ayon sa aming sariling, ayon sa nadarama namin, kapag inilalagay natino ang ating sarili sa.",
+    "Sitwasyon tao, at tiningnan ito, tulad ng mga mata mula sa kanyang istasyon maaari nating ang maging.",
+    "O hindi lubos na makapasok at, makisimpatiya mga damdamin at motibo, na nakakaimpluwensya dito amino.",
+    "Ang aming sariling mga damdamin at motibo, hindi tayo maaaring gumawa, ng anumang paghuhusga tungkol.",
+    "Aalisin ating sarili, tulad nito, mula sa aming sariling likas na istasyon at pagsisikap na tingnano."
+    ]
+
+    num_rounds = len(text_list)
     treatments = [0, 1]
     shock = 0.2
     time_limit = 60*4

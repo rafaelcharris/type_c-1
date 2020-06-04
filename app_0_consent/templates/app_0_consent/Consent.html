@@ -49,9 +49,12 @@
 
     <p>Nombre completo: {{ form.name }} <br>
         Numero de documento de identidad: {{ form.id_number }} <br>
-        Número de celular sin espacios. Ejemplo: 3173312318 (para el pago con Daviplata): {{ form.phone }}</p>
+        Número de celular sin espacios. Ejemplo: 3173312318 (para el pago con Daviplata): {{ form.phone }}
+        Correo institucional: {{ form.e_mail }}
+    </p>
 
     {{ form.phone.errors }}
+    {{ form.id_number.errors }}
 
     <p>Antes de continuar, por favor verifique con precaución el número de teléfono para el pago con Daviplata.</p>
 
