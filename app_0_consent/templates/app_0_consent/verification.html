@@ -1,0 +1,33 @@
+% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instrucciones Generales
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Bienvenido. De parte de la UEC-CID agradecemos su participación. <br>
+
+    Para poder verificar que usted si puede participar en este estudio
+        (o que no haya participado previamente), primero debemos verificar los siguientes datos: <br>
+        {{player.id_number}}
+        {{player.e_mail}}
+
+Adicionalmente, recuerde que el pago por participar en este estudio lo vamos a hacer a través de la plataforma Daviplata. Por favor ingrese el número de teléfono asociado a su cuenta de Daviplata.
+        {{ player.phone }}
+
+Antes de continuar con la siguiente página, por favor verifique cuidadosamente el número de teléfono de Daviplata para evitar problemas con su pago. <br>
+
+Cuanto este listo, por favor de clic en el botón “Siguiente”.
+    </p>
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">Empezar</button>
+
+ {{ form.phone.errors }}
+
+{% endblock %}
+
+{% block styles  %}
+    <link href="{% static "css.css" %}" rel="stylesheet">
+{% endblock %}
