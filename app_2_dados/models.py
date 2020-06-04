@@ -62,18 +62,7 @@ class Player(BasePlayer):
     final_payoff = models.IntegerField()
     #TODO: There´s got to be an easier way to write this. Perhaps with aditional parameters or a dictionary?
     def set_payoff(self):
-        if self.reporte_numero == 1:
-            self.total_payoff = 2
-        elif self.reporte_numero == 2:
-            self.total_payoff = 4
-        elif self.reporte_numero == 3:
-            self.total_payoff = 6
-        elif self.reporte_numero == 4:
-            self.total_payoff = 8
-        elif self.reporte_numero == 5:
-            self.total_payoff = 10
-        elif self.reporte_numero == 6:
-            self.total_payoff = 0
+        self.total_payoff = self.reporte_numero * 2 if self.reporte_numero < 6 else self.total_payoff == 0
 
     def final_payoff(self):
         """
