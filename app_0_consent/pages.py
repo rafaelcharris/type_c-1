@@ -7,6 +7,8 @@ class Verification(Page):
     form_model = 'player'
     form_fields = ['id_number', 'phone', 'e_mail']
 
+    def before_next_page(self):
+        self.player.update_database()
 
 class Bienvenido(Page):
 
@@ -27,11 +29,11 @@ class Bienvenido(Page):
 class Consent(Page):
 
     form_model = 'player'
-    form_fields = ['name', 'id_number', 'phone', 'e_mail']
+    form_fields = ['name']
 
     def before_next_page(self):
         self.player.report_consent()
-        self.player.update_database()
+
 
     def is_displayed(self):
         return self.player.was_before == False
