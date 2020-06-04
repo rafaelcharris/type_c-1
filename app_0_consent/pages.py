@@ -21,6 +21,8 @@ class Bienvenido(Page):
                 self.player.is_mobile = False
         print("fue mobile?: " + str(is_mobile))
 
+    def is_displayed(self):
+        return self.player.was_before == False
 
 class Consent(Page):
 
@@ -31,6 +33,9 @@ class Consent(Page):
         self.player.report_consent()
         self.player.update_database()
 
+    def is_displayed(self):
+        return self.player.was_before == False
+
 class NormalWaitPage(WaitPage):
     pass
 
@@ -40,6 +45,7 @@ class end(Page):
         return self.player.was_before == True
 
 page_sequence = [
+    Verification,
     Bienvenido,
     Consent,
     end
