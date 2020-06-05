@@ -20,7 +20,7 @@ SESSION_CONFIGS = [
                          'app_11_report'],
 #        'app_sequence': ['app_0_consent', 'app_1_transcription', 'app_2_dados', 'app_10_questionnaire',
 #                         'app_11_report'],
-        'use_browser_bots': False,
+        'use_browser_bots': True,
         'time_limit': 60*4,
     },
 ]

@@ -8,4 +8,4 @@ import random
 class PlayerBot(Bot):
 
     def play_round(self):
-        yield pages.the_end, dict(e_mail=str(random.randint(1, 100)) + "@unal.edu.co")
+        yield pages.the_end
