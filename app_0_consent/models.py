@@ -83,7 +83,7 @@ class Player(BasePlayer):
         print(df_sheet.values)
         print(self.id_number)
         # toca convertir los valores en strings para que se pueda hacer bien la comparación con valores
-        if str(self.id_number) in df_sheet.values or str(self.phone) in df_sheet.values:
+        if str(self.id_number) in df_sheet.values or str(self.e_mail) in df_sheet.values:
             print("este valor ya está. no lo puede agregar")
             print(df_sheet.values)
             self.was_before = True
