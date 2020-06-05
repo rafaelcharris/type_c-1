@@ -41,7 +41,6 @@ class Constants(BaseConstants):
     num_rounds = len(text_list)
     treatments = [0, 1]
     shock = 0.2
-    time_limit = 60*4
     piece_rate = 1
     shock_for_instructions = str(int((1-shock)*100)) + "%"
     # Session wide constants (to be copied and pasted in each models.py)
