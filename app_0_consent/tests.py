@@ -11,7 +11,8 @@ class PlayerBot(Bot):
     phones = itertools.cycle(['1234567891'])
 
     def play_round(self):
-        yield (pages.Bienvenido)
-        yield (pages.Consent, {'name': next(self.names), 'id_number': random.randint(18, 90), 'phone': next(
+        yield (pages.Verification, {'id_number': random.randint(18, 90), 'e_mail': str(random.randint(1,100)) + "@unal.edu.co" , 'phone': next(
             self.phones)})
+        yield (pages.Bienvenido)
+        yield (pages.Consent, {'name': next(self.names)})
 
