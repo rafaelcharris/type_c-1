@@ -11,7 +11,7 @@ class PlayerBot(Bot):
     phones = random.sample(range(100),5)
     phones = "".join(str(num) for num in phones)
     def play_round(self):
-        yield (pages.Verification, {'id_number': random.randint(18, 90), 'e_mail': str(random.randint(1,100)) + "@unal.edu.co" , 'phone':
+        yield (pages.Verification, {'id_number': random.randint(18, 90), 'e_mail': "bot" + str(random.randint(1,100)) + "@unal.edu.co" , 'phone':
             self.phones})
         yield (pages.Bienvenido)
         yield (pages.Consent, {'name': next(self.names)})
