@@ -32,7 +32,6 @@ class Player(BasePlayer):
     id_number = models.StringField()
     phone = models.StringField() #For verification
     was_before = models.BooleanField()
-    #e_mail = djmodels.EmailField(validators=[UnalEmailValidator()])
     e_mail = models.StringField()
     is_mobile = models.BooleanField()
 
