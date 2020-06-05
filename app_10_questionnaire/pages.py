@@ -2,30 +2,6 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-class phone_check(Page):
-
-    form_model = 'player'
-    form_fields = ['phone2']
-
-    def before_next_page(self):
-        self.player.phone_correct()
-
-class wrong_number(Page):
-
-    form_model = 'player'
-    form_fields = ['phone2']
-
-    def vars_for_template(self):
-        return dict(
-            original = self.participant.vars['phone']
-        )
-
-    def is_displayed(self):
-        if self.player.is_phone is False:
-            return True
-        else:
-            return False
-
 class Cuestionario(Page):
     form_model = 'player'
     form_fields = ['sexo', 'edad', 'e_civil', 'facultad','carrera',
@@ -40,8 +16,6 @@ class Medidas(Page):
 
 
 page_sequence = [
-    #phone_check,
-    #wrong_number,
     Cuestionario,
     Medidas,
 ]
