@@ -30,7 +30,7 @@ class Player(BasePlayer):
 
     name = models.StringField()
     id_number = models.StringField()
-    phone = models.StringField() #For verification
+    phone = models.StringField()
     was_before = models.BooleanField()
     e_mail = models.StringField()
     is_mobile = models.BooleanField()
