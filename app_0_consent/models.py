@@ -60,6 +60,7 @@ class Player(BasePlayer):
         self.participant.vars['consent_name'] = self.name
         self.participant.vars['consent_id_number'] = self.id_number
         self.participant.vars['consent_phone'] = self.phone
+        self.participant.vars['consent_e_mail'] = self.e_mail
         print("[[ APP_0_CONSENT ]] - PLAYER - report_consent.............ROUND NUMBER", self.round_number)
         print("[[ APP_0_CONSENT ]] - PLAYER - report_consent.............PVARS ARE", self.participant.vars)
 

@@ -36,11 +36,23 @@ class Subsession(BaseSubsession):
             row['consent_name'] = p.participant.vars.get('consent_name')
             row['consent_id_number'] = p.participant.vars.get('consent_id_number')
             row['consent_phone'] = p.participant.vars.get('consent_phone')
+            row['consent_e_mail'] = p.participant.vars.get('consent_e_mail')
             row['transcription_final_payoff'] = p.participant.vars.get('transcription_final_payoff')
             row['dados_final_payoff'] = p.participant.vars.get('dados_final_payoff')
             row['ultra_final_payoff'] = p.participant.vars.get('ultra_final_payoff')
             table_rows.append(row)
         return {'table_rows': table_rows}
+
+    def pass_relevant_info_to_database(self):
+        for p in self.get_players():
+            p.name = p.participant.vars.get('consent_name')
+            p.id_number = p.participant.vars.get('consent_id_number')
+            p.phone = p.participant.vars.get('consent_phone')
+            p.e_mail = p.participant.vars.get('consent_e_mail')
+            p.payoff_transcription = p.participant.vars.get('transcription_final_payoff')
+            p.payoff_dados = p.participant.vars.get('dados_final_payoff')
+            p.payoff_ultra_final = p.participant.vars.get('ultra_final_payoff')
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 
 class Group(BaseGroup):
@@ -48,5 +60,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-
-    e_mail = djmodels.EmailField(verbose_name='Correo Electrónico', validators=[UnalEmailValidator()])
+    """
+    The models here are to copy and pase the most relevant administrative variables into the oTree database for easy
+    reference later on
+    """
+    name = models.StringField()
+    id_number = models.StringField()
+    phone = models.StringField() #For verification
+    e_mail = models.StringField()
+    payoff_transcription = models.IntegerField()
+    payoff_dados = models.IntegerField()
+    payoff_ultra_final = models.IntegerField()
