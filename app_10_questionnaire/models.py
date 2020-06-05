@@ -39,24 +39,6 @@ def preg_cuatro(label):
 
 class Player(BasePlayer):
 
-    #is_phone = models.BooleanField()
-
-    def phone_correct(self):
-        if self.participant.vars['phone'] != self.phone2:
-            print("numero incorrecto")
-            self.is_phone = False
-            print(self.is_phone)
-        else:
-            print("number ")
-            self.is_phone = True
-            print(self.is_phone)
-
-    #phone2 = models.StringField(label = "Escríba su número de celular sin espacios. Ejemplo 3103312319") #tal vez toca cambiar este field
-
-    def phone2_error_message(self, value):
-        if len(str(value)) != 10:
-            return "Error: el número de celular debe tener 10 dígitos"
-
     sexo =models.IntegerField(
         label= '¿Cuál es su sexo',
         choices =[
