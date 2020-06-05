@@ -3,6 +3,7 @@ from . import pages
 from ._builtin import Bot
 from .models import Constants
 import random, itertools
+import time
 
 class PlayerBot(Bot):
     def play_round(self):
@@ -33,14 +34,12 @@ class PlayerBot(Bot):
 
         answer = answers[self.player.round_number - 1]
 
-
-
         if self.round_number == 1:
             yield(pages.Instrucciones)
             yield (pages.Tarea, {'text_input': answer})
-        elif 1 < self.round_number < Constants.num_rounds:
+        elif 1 < self.round_number < Constants.num_rounds and (self.player.participant.vars['expiry'] - time.time() > 0.2):
             yield (pages.Tarea, {'text_input': answer})
         elif self.round_number == Constants.num_rounds:
-            yield (pages.Tarea, {'text_input': answer})
+            #yield (pages.Tarea, {'text_input': answer})
             yield (pages.Resultados)
 

@@ -12,7 +12,7 @@ class Instrucciones(Page):
 
     def vars_for_template(self):
         return dict(
-            time_limit=int(Constants.time_limit / 60)
+            time_limit=self.session.config['time_limit']
         )
 
     def before_next_page(self):
@@ -74,6 +74,8 @@ class Resultados(Page):
             return False
 
     def vars_for_template(self):
+        self.player.accumulated_variables()
+        self.player.final_payoff_calculator()
         table_rows = []
         for p in self.player.in_all_rounds():
             if (p.text_input is not None):
