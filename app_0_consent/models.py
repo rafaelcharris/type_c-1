@@ -6,22 +6,11 @@ from otree.api import (
 import gspread
 import pandas as pd
 
-from django.db import models as djmodels
-from django.core.validators import EmailValidator
-
-
 author = 'Your name here'
 
 doc = """
 Your app description
 """
-class UnalEmailValidator(EmailValidator):
-    def validate_domain_part(self, domain_part):
-        if domain_part != 'unal.edu.co':
-            return False
-        return True
-    message = "Por favor ingrese un correo con dominio @unal.edu.co"
-
 
 class Constants(BaseConstants):
     name_in_url = 'app_0_consent'
@@ -63,6 +52,10 @@ class Player(BasePlayer):
             int(value)
         except ValueError:
             return "Error: el documento de identidad tiene carácteres no númericos"
+
+    def e_mail_error_message(self, value):
+        if "@unal.edu.co" not in value:
+            return "Error: por favor, escriba un correo con dominio @unal.edu.co"
 
     def report_consent(self):
         self.participant.vars['consent_name'] = self.name
