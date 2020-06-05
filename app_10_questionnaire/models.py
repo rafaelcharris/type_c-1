@@ -68,7 +68,7 @@ class Player(BasePlayer):
     )
     edad = models.PositiveIntegerField(
         label = '¿Cuál es su edad?',
-        min = 13, max = 70
+        min = 18, max = 70
     )
     e_civil = models.IntegerField(
         choices=[
@@ -80,19 +80,21 @@ class Player(BasePlayer):
         verbose_name='¿Cuál es su estado civil?',
     )
     facultad = models.CharField(label = '¿ En que facultad está usted matriculado?',
-                                choices =["Ciencias Económicas", "Ciencias Agrarias", "Artes","Ciencias","Enfermería",
+                                choices =["Ciencias Económicas", "Ciencias Agrarias", "Artes", "Ciencias", "Enfermería",
                                           "Ciencias Humanas", "Derecho, Ciencias Políticas y Sociales", "Ingeniería", "Medicina",
                                           "Odontología", "Medicina Veterinaria y Zootécnia", "Otra"])
     carrera = models.CharField(label = '¿En que carrera está usted matriculado?',
-                               choices = ["Administración de empresas", "Antropología", "Arquitectura", "Artes plásticas",
+                               choices = ["Administración de empresas", "Antropología", "Arquitectura",
+                                          "Artes plasticas",
                                           "Biología", "Ciencia Política", "Ciencias de la Computación", "Cine y Televisión",
                                           "Contaduría Pública", "Derecho", "Diseño Gráfico", "Diseño Industrial", "Economía", "Enfermería",
-                                          "Español y Filolofía clásica", "Estadística", "Estudios Literarios", "Farmacia", "Filología e Idiomas",
+                                          "Español y Filologia clásica", "Estadística", "Estudios Literarios",
+                                          "Farmacia", "Filología e Idiomas",
                                           "Filosofía", "Fisioterapia", "Fonoaudiología", "Geografía", "Geología", "Historia", "Ingeniería Agrícola",
-                                          "Ingeniería Agronómica", "Ingeniería Civil", "Ingeniería de Sisstemas y Computación", "Ingeniería Eléctrica",
+                                          "Ingeniería Agronómica", "Ingeniería Civil", "Ingeniería de Sistemas y Computación", "Ingeniería Eléctrica",
                                           "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", " Ingeniería Mecatrónica",
-                                          "Ingeniería Química", "Lingüística", "Matemáticas", "Medicina", "medicina Veterinaria", "Música",
-                                          "Música Instrumental", "Nutrición y Dietética", "Odontología", "Psicología", " Química",
+                                          "Ingeniería Química", "Lingüística", "Matemáticas", "Medicina",
+                                          "Medicina Veterinaria", "Música", "Nutrición y Dietética", "Odontología", "Psicología", " Química",
                                           "Sociología", "Terapía Ocupacional", "Trabajo Social", "Zootecnia", "Otra"])
     veces_matriculado = models.IntegerField(label = "¿Cuantas matrículas ha pagado contando la de este semestre?")
     ed_padre = models.IntegerField(
