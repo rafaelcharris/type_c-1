@@ -29,7 +29,7 @@
                 <td>0 {{ Constants.currency }}</td>
             </tr>
         </table>
-    <p>Por favor use su dado virtual y realice sus lanzamientos (https://www.dado-virtual.com/).</p>
+    <p>Por favor, use su dado virtual y realice sus lanzamientos (<a href = "https://www.dado-virtual.com/" target = "_blank">www.dado-virtual.com</a>).</p>
     <p>
         {% formfield player.reporte_numero %}
     </p>
@@ -45,6 +45,6 @@
 {% endblock %}
 
 {% block styles  %}
-    <link href="{% static "static_dados/css/style_dados.css" %}" rel="stylesheet">
+    <link href="{% static "css.css" %}" rel="stylesheet">
 {% endblock %}
 

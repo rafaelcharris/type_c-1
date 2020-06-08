@@ -55,7 +55,7 @@ class Player(BasePlayer):
             (Constants.numbers_payoffs[4], str(Constants.numbers_payoffs[4]) + " " + Constants.currency),
             (Constants.numbers_payoffs[5], str(Constants.numbers_payoffs[5]) + " " + Constants.currency),
         ],
-        verbose_name='Ahora por favor seleccione su pago de acuerdo a la tabla anterior en el siguiente cuadro:',
+        verbose_name='Ahora, por favor seleccione su pago de acuerdo con la tabla anterior en el siguiente cuadro:',
     )
 
     total_payoff = models.IntegerField()
