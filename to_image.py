@@ -31,4 +31,4 @@ for text in range(len(text_list)):
 
     d.text((10, 10), text_list[text], font = helvetica, fill=(62,61,57))
 
-    img.save("_static\\app_1_transcription\\paragraphs\\" + str(text) +".png")
+    img.save("_static\\app_1_transcription\\paragraphs\\" + "img_" + str(text) +".png")
