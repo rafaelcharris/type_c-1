@@ -1,16 +1,45 @@
+#pip install pillow
 from PIL import Image, ImageDraw, ImageFont
 
 #fnt = ImageFont.truetype('/Library/Fonts/Arial.ttf', 15)
-text_list = [ "Lah isang anak na lalaki, sa pagkamatay ng isang mapagpasunod at kagalang-galang ama, ay maaaring ma.",
-    "San kanyang, kalungkutan ay una sa lahat,  natagpuaan sa isang uri, ng pakikiramay sa kanyang nakaraa.",
-    "Yon taong mayaman, ay nagmula sa kanyang kayamanan, rsapagkat naramdaman niya na natural na nakukuha.",
-    "Lam mapagpakumbabang, pag aalaga at masakit na atensiyon na sumasakop, sa mga nasa kanyang kalagayan.",
-    "Aks niiwas nila, ang kanilang mga mata sa kanya, o kung ang matinding kalungkutan ng kanyang pagkaba.",
-    "Ipi pinipilit silang tumingin sa kanya, ito ay lamang na tumiwalag kaya hindi sumasangayon, sa isang.",
-    "Pan kanyang mga aksyon, ay mga bagay ng pangangalaga sa publiko magkalas ng isang salita, mahirap ma.",
-    "Pup sa isang malaking, pagpupulong siya ang taong pinagtutuunan ng lahat ng kanilang mga matta, nasa.",
-    "Ang kanilang mga, hilig ay tila naghihintay na maghintay, upang matanggap ang kilusan at direkmksyon.",
-    "Agk mayroon siya, sa bawat sandali, isang pagkakataon ng mga kagiliw-giliw na sangkatauhan, at sa pa.",
+text_list = [
+    "Lah isang anak na lalakia",
+    "Sa pagkamatay ng isang ma",
+    "Pagpasunod at kagalanggal",
+    "Ang ama ay maaaring maank",
+    "Anyang kalungkutan ay una",
+    "Sa lahat natagpuaan sa is",
+    "Ang uri ng pakikiramay sa",
+    "Kanyang nakaraa yon taong",
+    "Aayaman ay nagmula sa kan",
+    "Yang kayamanan rsapagkatn",
+    "Aramdaman niya na natural",
+    "Nakukuha lam mapagpakumba",
+    "Bang pag aalaga at masaki",
+    "Tna atensiyon na sumasako",
+    "Sa mga nasa kanyang kalag",
+    "Aayanks niiwas nila angka",
+    "Hilang mga mata sa kanyao",
+    "Kung ang matinding kalung",
+    "Kutan ng kanyang pagkabap",
+    "Pnipilit silang tumingins",
+    "Kanya ito ay lamang natum",
+    "Iwalag kaya hindi sumasan",
+    "Gayon sa isang pan kanyan",
+    "Mga aksyonay mga bagay ng",
+    "Pangangalaga sa publikoma",
+    "Gkalas ng isang salitamah",
+    "Iirap ma pup sa isangmala",
+    "King pagpupulong siya ang",
+    "Taong pinagtutuunan ng la",
+    "Hat ng kanilang mga matta",
+    "Nasaang kanilang mga hili",
+    "Gytila naghihintay na mag",
+    "Hintay upang matanggap an",
+    "Agg kilusan at direkmksyo",
+    "Agk mayroon siya sa bawat",
+    "Sandali isang pagkakataon",
+    "Ng mga kagiliwgiliw nasan",
     "Kan yang sarili, ang object ng pagmamasid at kapwalpakiramdam ng bawat katawan, tungkol sa kanya wal.",
     "Ang alituntunin na kung saan tayo ay natural na sumasang, ayon sumasang, ayono sa ating sariling pag.",
     "Ay tila magkakapareho, ng pareho a pamamagitan ng kung ipinatupad natin, a mga katulad na paghuhukom.",
@@ -21,7 +50,8 @@ text_list = [ "Lah isang anak na lalaki, sa pagkamatay ng isang mapagpasunod at 
     "Sitwasyon tao, at tiningnan ito, tulad ng mga mata mula sa kanyang istasyon maaari nating ang maging.",
     "O hindi lubos na makapasok at, makisimpatiya mga damdamin at motibo, na nakakaimpluwensya dito amino.",
     "Ang aming sariling mga damdamin at motibo, hindi tayo maaaring gumawa, ng anumang paghuhusga tungkol.",
-    "Aalisin ating sarili, tulad nito, mula sa aming sariling likas na istasyon at pagsisikap na tingnano."]
+    "Aalisin ating sarili, tulad nito, mula sa aming sariling likas na istasyon at pagsisikap na tingnano."
+]
 
 for text in range(len(text_list)):
     #https://code-maven.com/create-images-with-python-pil-pillow
