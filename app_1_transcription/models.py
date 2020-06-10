@@ -121,7 +121,8 @@ class Player(BasePlayer):
     is_correct = models.IntegerField()
     accumulated_is_correct = models.IntegerField()
     accumulated_payoff = models.IntegerField()
-    final_payoff = models.IntegerField()
+    final_payoff = models.FloatField()
+    final_payoff_cop = models.IntegerField()
 
     def check_if_correct(self):
         """
@@ -162,17 +163,20 @@ class Player(BasePlayer):
         Constants.shock. Besides, it converts UME into pesos.
         """
         if self.treatment == 1:
-            self.final_payoff = int(self.accumulated_payoff * Constants.shock * Constants.cop_per_ume)
+            self.final_payoff = self.accumulated_payoff * Constants.shock
+            self.final_payoff_cop = int(self.accumulated_payoff * Constants.shock * Constants.cop_per_ume)
         elif self.treatment == 0:
-            self.final_payoff = self.accumulated_payoff * Constants.cop_per_ume
+            self.final_payoff = self.accumulated_payoff
+            self.final_payoff_cop = self.accumulated_payoff * Constants.cop_per_ume
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............round_number: ",self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............final_payoff: ",self.final_payoff)
+        print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............final_payoff: ",self.final_payoff_cop)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - final_payoff().............treatment: ",self.treatment)
 
     def report_transcription(self):
         """
         This function passes key information from each app to participant.vars so report can access it.
         """
-        self.participant.vars['transcription_final_payoff'] = self.final_payoff
+        self.participant.vars['transcription_final_payoff'] = self.final_payoff_cop
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_transcription.............ROUND NUMBER", self.round_number)
         print("[[ APP_1_TRANSCRIPTION ]] - PLAYER - report_transcription.............PVARS ARE", self.participant.vars)
